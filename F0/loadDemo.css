@@ -1,0 +1,122 @@
+body{
+    /*background-color: #fef2af;*/
+    background-color: #fefdd7;
+}
+.form-div{
+    position: relative;
+    top:100px;
+    width:500px;
+    height:350px;
+    margin:auto auto;
+    border:2px solid #fee8af;
+    border-radius:  15px 15px 5px 5px;
+    box-shadow: #999999 5px 5px 20px;
+    background-color: #c1ffd5;
+    /*background-color: #ffd030;*/
+}
+
+.form{
+    text-align: center;
+    position: relative;
+    top: 50px;;
+
+}
+input[type="text"],
+input[type="password"]{
+    margin: 10px 0px;
+    width:200px;
+    height:30px;
+    border-radius: 5px;
+    background-color: #feffff;
+    border:1px solid #d9d7d7;
+    position: relative;
+    left: 20px;
+}
+.button-group{
+    text-align: center;
+}
+input[type="button"],
+input[type="submit"]
+{
+    display: inline-block;
+    width: 100px;
+    height: 35px;
+    margin: 15px 10px;
+    border-radius: 5px;
+    border:1px solid #f1efef;
+    text-align: center;
+    background-color: #8da1f3;
+    color: white;
+    font-size: 20px;;
+    font-weight: 200;
+}
+input[type="button"]:hover,
+input[type="submit"]:hover{
+    border-color: #ffec59;
+}
+input[type="button"]:active,
+input[type="submit"]:active{
+    border:2px inset #fefff1;
+}
+.header-content{
+    color: #3c3c39;
+    width: 100%;
+    height: 80px;
+    border-radius: 10px 10px 0px 0px;
+    background-color: #ff9999;
+    text-align: center;
+}
+.header-text{
+    margin-top: 0px;
+    position: relative;
+    top: 15px;
+    font-family: Arial;
+    font-size: 35px;
+    color: white;
+}
+.togglePassword{
+    position: relative;
+    display: block;
+    float: inherit;
+    left: 0px;
+    right: 0px;
+    margin-left: 0px;
+}
+.ID-password-group{
+    display: inline-block;
+    position: relative;
+    left: 10px;;
+}
+.password-button-group{
+    display: inline-block;
+    position: relative;
+    left: 8px;
+    top: 10px;;
+}
+.hidePassword,
+.showPassword,
+.forget-password,
+.remember-password{
+    display: inline-block;
+    width: 12px;;
+    height: 12px;;
+    background-color: #c6cbeb;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.showPassword,
+.remember-password{
+    background-color: #ff9999;
+}
+#text-span{
+    position: relative;
+    top: 8px;
+    margin-left: 10px;
+    display: inline-block;
+    width: 30px;;
+    font-size:8px;
+    text-align: left;
+    line-height: 18px;
+    color: #8486ff;
+    overflow: visible;
+}
