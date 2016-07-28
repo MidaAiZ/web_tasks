@@ -21,7 +21,7 @@
             }
             if($numContainer != null) {
                 try {
-                    $numContainer.children("li").eq(current).css(newCSS.activeCSS).siblings().css(newCSS.normalCSS);
+                    $numContainer.children("[data-role ~= number-list]").eq(current).css(newCSS.activeCSS).siblings().css(newCSS.normalCSS);
                 } catch (e) {
                     console.warn("样式初始化出错,传入格式有误！");
                 }
@@ -66,7 +66,8 @@
 //插件函数及默认数据
     var methods={
         defaultsCSS : {
-            "normalCSS": {"list-style" : "none",   //设置图片为未显示状态下图片底部显示数量的标签CSS
+            "normalCSS" : {       //设置图片为未显示状态下图片底部显示数量的示数栏标签CSS
+                "list-style" : "none",
                 "display" : "inline-block",
                 "width" : "10px",
                 "height" : "10px",
@@ -77,7 +78,7 @@
                 "color" : "white",
                 "text-align" : "center",
                 "cursor" : "pointer"},
-            "activeCSS" : {"background":"red"}   //设置图片为显示状态下底部示数标签CSS
+            "activeCSS" : {"background":"red"}   //设置图片为显示状态下底部示数栏标签CSS
         },
 
         init : function() {
@@ -86,9 +87,9 @@
                 $numContainer=this.find("[data-role ~= number-container]");
                 imgSize = $imgList.size();
 
-                //以下非空判断无效 待解决  因为即使未找到节点$imgList和$numContainer也会被赋予object类型和属性
+                //以下非空判断无效 待解决  无法判断的原因是即使未找到节点 $imgList和$numContainer也会被赋予object类型和属性
+                //原生js中判断元素是否为节点的nodeType在jQuery中并不支持，暂时还没有找到jQuery判断一个变量是否为节点的方法
                 if($imgList == null) {$.error("找不到图片列表！请确认list节点是否正确设置属性：data-role = 'image-list'") }
-                if($numContainer == null) {console.warn("找不到属性含data-role = 'number-container'的ul节点，无法设置图片轮播的示数标签！") }
 
                 if($numContainer != null) {
                     for (var i = 1; i <= imgSize; i++) {	//创建图片个数相对应的底部数字个数
@@ -111,7 +112,7 @@
                     newCSS = methods.defaultsCSS;
                     $numContainer.find("[data-role ~= number-list]").css(methods.defaultsCSS.normalCSS);
                 }
-
+                //给当前正在显示的图片对应示数栏标签设置activeCSS，如果不设置则在页面刚打开时正在显示的图片示数栏标签没法显示ActiveyangCSS样式
                 $numContainer.find("[data-role ~= number-list]").eq(current).css(newCSS.activeCSS);
             }
             return this;
@@ -158,8 +159,10 @@
             return this;
         },
         gotoImg: function(index) {   //跳转到指定张数的图片
-            current=index;           //重新定位当前播放的图片
-            privateMethods.show(index);
+            if(index >=0 && index <imgSize) {
+                current = index;           //重新定位当前播放的图片
+                privateMethods.show(index);
+            }
             return this;
         },
         getIndex : function() {      //获取当前标签在同辈里的索引号
