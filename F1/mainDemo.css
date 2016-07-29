@@ -1,0 +1,108 @@
+*{
+    margin: 0px;
+    border:none;
+}
+.header{
+    position: relative;
+    width: 1260px;
+    height: 80px;
+    margin: auto;
+    background-color: #000000;
+}
+.content{
+    width: 1260px;
+    height: auto;
+    margin: auto;
+    text-align: center;
+}
+.content-top{
+    width: 100%;
+    height: 405px;
+    margin: 10px auto;
+    text-align: center;
+}
+.center-left {
+    display: inline-block;
+    float: left;
+    width: 23%;
+    height:100%;
+    margin: auto 0.5%;
+    background-color: #ff9999;
+}
+.center-right{
+    display: block;
+    float: left;
+    width: 23%;
+    height:100%;
+    margin:auto 0.5%;
+    background-color: #6d99ff;
+    /*clear: both;*/
+}
+.center{
+    float: left;
+    width: 52%;
+    height: 100%;
+    margin:auto;
+    text-align: center;
+}
+
+iframe{
+    /*margin: 2px;*/
+    width: 100%;
+    height: 100%;
+    margin-right: -15px;
+    clear: both;
+}
+.content-bottom{
+    width: 1260px;
+    height: 800px;
+    margin:auto;
+    background-color: #c6cbeb;
+}
+.footer{
+    position: relative;
+    width: 1260px;
+    height: 80px;
+    margin : 10px auto 0px;
+    background-color: #000000;
+}
+
+/*移动端 手机&平板*/
+@media screen and (max-width: 800px){
+    .center-left,
+    .center-right{
+        /*width:15%;*/
+        /*height:100%;*/
+        /*margin:0 1% 0 1%;*/
+        display: none;
+        clear: both;
+    }
+    .header,
+    .footer{
+        width: 100%;
+        height: 80px;
+    }
+    .content{
+        width: 100%;
+        height:100%;
+    }
+    .center{
+        clear: both;
+        width:90%;
+        height: 100%;
+        margin:auto;
+
+    }
+    iframe{
+        margin-right: -15px;
+    }
+    .content-top {
+        width:100%;
+        margin: 10px auto;
+        text-align: center;
+    }
+    .content-bottom{
+        width:100%;
+        margin: auto;
+    }
+}
