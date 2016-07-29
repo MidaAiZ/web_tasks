@@ -1,21 +1,22 @@
 
 *{
     margin: 0px;
+    padding: 0px;;
 }
 li{
     list-style: none;
 }
 img{
-    width: 650px;
+    width: 600px;;
     height: 400px;
     overflow: hidden;
 }
 .container{
     position: relative;
-    width: 650px;
+    width: 600px;
     height: 400px;
     margin: auto;
-    background-color: #8486ff;
+    background-color: rgba(46, 46, 46, 0.97);
 }
 .img-container{
     width: 100%;
@@ -54,8 +55,12 @@ img{
     width: 100%;
     position: absolute;
     bottom: 5%;
+    left: 0px;;
     text-align: center;
 }
+/*.num-container ul{*/
+    /**/
+/*}*/
 /*.num-ul li{*/
     /*display: inline-block;*/
     /*margin: 5px;*/
