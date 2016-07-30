@@ -14,7 +14,7 @@
     var containerJS = null;    //图片<li>节点的JS原生父节点
 
 //定义私有函数  供内部调用
-    var privateMethods={
+    var privateMethods = {
         show : function(current) {  //显示当前需要播放的图片+设置当前播放的图片对应示数栏内的标签样式
             $imgList.eq(current).css("display","list-item").siblings().css("display","none");
             //这里先判断一下是否有示数栏
@@ -28,14 +28,14 @@
             }
         },
         autoShow : function() {      //自动轮播函数 包含图片切换逻辑， 被startShow()通过setInterval调用
-            if(current>=(imgSize-1)) {     //如果当前显示到了最后一张则下一张即切换到第一张
-                current=0;
+            if(current >= (imgSize-1)) {     //如果当前显示到了最后一张则下一张即切换到第一张
+                current = 0;
             } else {
                 current++;
             }
             privateMethods.show(current);
         },
-        slideStart : function (event){      //屏幕触摸开始时调用的函数  在安卓上可以不用监听touchstart事件，但是ios必须要，否则无法触发滑动事件
+        slideStart : function (event) {      //屏幕触摸开始时调用的函数  在安卓上可以不用监听touchstart事件，但是ios必须要，否则无法触发滑动事件
             event.preventDefault();
             var touch=event.touches[0];     //开始触摸，获取第一个触摸点
             startX=touch.pageX;             //记录X坐标
@@ -44,8 +44,8 @@
         },
         slideMove : function(event){        //滑动切换图片的函数
             event.preventDefault();
-            var touch=event.touches[0];      //获取滑动的第一点，记录X坐标
-            var x=touch.pageX;
+            var touch = event.touches[0];      //获取滑动的第一点，记录X坐标
+            var x = touch.pageX;
 
             if (x - startX < -5 ) {     //左滑距离>5切换到上一张  不要我问我为什么不是下一张^O^
                 current++;
@@ -53,9 +53,9 @@
                 current--;
             }
             if (current <= -1){
-                current=imgSize-1;
+                current = imgSize-1;
             }else if (current > (imgSize-1)){
-                current=0;
+                current = 0;
             }
             privateMethods.show(current);       //切换图片
             interval=setInterval(privateMethods.autoShow,2000);     //重新绑定interval自动轮播
@@ -70,7 +70,7 @@
     }
 
 //插件函数及默认数据
-    var methods={
+    var methods = {
         defaultsCSS : {
             "normalCSS" : {       //设置图片为未显示状态下图片底部显示数量的示数栏标签CSS
                 "list-style" : "none",
@@ -88,8 +88,8 @@
         },
 
         init : function() {     //初始化，获取图片父级容器和位于图片底部用于显示图片数量的示数栏父级容器
-                $imgList=this.find("[data-role ~= image-list]");
-                $numContainer=this.find("[data-role ~= number-container]");
+                $imgList = this.find("[data-role ~= image-list]");
+                $numContainer = this.find("[data-role ~= number-container]");
                 imgSize = $imgList.size();
 
                 //如果找不到图片列表则报错  咱大图片轮播插件都找不到图片了还怎么玩
@@ -124,9 +124,9 @@
         },
         startShow : function() {     //开始自动轮播
             if ( !isNaN(arguments[0])){   //判断传入参数是否为数字
-                interval=setInterval(privateMethods.autoShow,arguments[0]);
+                interval = setInterval(privateMethods.autoShow,arguments[0]);
             } else {
-                interval=setInterval(privateMethods.autoShow,2000);
+                interval = setInterval(privateMethods.autoShow,2000);
             }
             return this;
         },
@@ -150,7 +150,7 @@
         prev: function() {      //上一张
             current--;
             if (current < 0) {
-                current = 5;
+                current = imgSize-1;
             }
             privateMethods.show(current);
             return this;
@@ -158,7 +158,7 @@
         next: function() {      //下一张
             current++;
             if (current > (imgSize-1)) {
-                current=0;
+                current = 0;
             }
             privateMethods.show(current);
             return this;
@@ -172,27 +172,10 @@
         },
         getIndex : function() {      //获取当前标签在同辈里的索引号
             return this.index();
-        },
-        //destroy : function() {
-        //    try{
-        //    alert("destroyed!");
-        //    imgSize = null;
-        //    startX = null;
-        //    current = null;
-        //    $imgList = null;
-        //    $numContainer = null;
-        //    if(interval != null){
-        //        clearInterval(interval);
-        //        interval = null;
-        //    }
-        //    containerJS.removeEventListener("touchstart",privateMethods.slideStart);
-        //    containerJS = null;
-        //    }catch(e){}
-        //    return this;
-        //}
+        }
     }
 
-    $.fn.lunbo=function(){
+    $.fn.lunbo = function(){
         var method = arguments[0];
         if(methods[method]) {          //当传入方法存在时调用指定方法
             method = methods[method];

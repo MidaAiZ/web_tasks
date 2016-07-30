@@ -17,6 +17,10 @@ img{
     height: 400px;
     margin: auto;
     background-color: #8486ff;
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
 }
 .img-container{
     width: 100%;
