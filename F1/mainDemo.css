@@ -69,8 +69,12 @@ iframe{
 }
 
 /*移动端 手机&平板*/
-/*测试了几部虚拟机和手机 返回的屏幕宽度都是980px*/
-@media screen and (max-device-width: 980px){
+/*测试了几部虚拟机和手机 返回的屏幕宽度都是980px  表示被搞醉了  屏幕大小明明就不一样嘛...*/
+/*响应式只支持屏幕屏幕小于980px的设备，对PC端即使缩放浏览器的大小也不支持响应式，原因是本网页采用了
+ iframe，如果在PC端支持响应式除非js途径 否则iframe对响应式的支持不好，为什么呢↓↓↓
+ 如果强行设置了iframe的大小,iframe内的网页大小并不变,不仅无法显示iframe内的全部内容,还会出现scroll影响美观
+ 出于这种情况考虑响应式实际上只支持两种，1：移动端980px，2：PC端1100px*/
+@media screen and (max-device-width: 980px){    /*  媒体查询 注意这边是max-device-width 不是max-width  */
     .center-left{
         display: none;
     }
