@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div{
+            width: 100px;
+            margin: 100px;
+            background-color: #c1ffd5;
+            height: 100px;
+            transition: all 1s;
+        }
+        .div:hover{
+            width: 200px;;
+            background: #818181;
+            border-radius: 50%;
+        }
+        .show{
+            -webkit-animation: test steps(100,start) 1s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes test {
+            from{
+                width: 100px;
+                margin: 100px;
+                height: 100px;
+                background-color: #8486ff;;
+            }
+            to{
+                background-color: #ff9999;
+                margin: 100px;
+                width: 200%;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="div" onclick="show()"></div>
+</body>
+    <script>
+        function show() {
+            document.getElementsByClassName("div")[0].className="show";
+        }
+    </script>
+</html>

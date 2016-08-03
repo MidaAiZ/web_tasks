@@ -39,27 +39,31 @@
             show : function() {  //显示当前需要播放的图片+设置当前播放的图片对应示数栏内的标签样式
                switch($container.data("switchEffect")){
                    case "cardX" : {
-                       $imgList.eq(current).addClass("effect-cardX-in").siblings().removeClass("effect-cardX-in");
-                       $imgList.eq(last).addClass("effect-cardX-out").siblings().removeClass("effect-cardX-out");
+                           console.log("left"+"last:"+last+"  current:"+current)
+                           $imgList.eq(current).addClass("effect-cardX-in").siblings().removeClass("effect-cardX-in effect-cardX-right-in effect-cardX-right-out");
+                           $imgList.eq(last).addClass("effect-cardX-out").siblings().removeClass("effect-cardX-out effect-cardX-right-in effect-cardX-right-out");
                    }break;
                    case "cardY" : {
                        $imgList.eq(current).addClass("effect-cardY-in").siblings().removeClass("effect-cardY-in");
                        $imgList.eq(last).addClass("effect-cardY-out").siblings().removeClass("effect-cardY-out");}break;
-                   case "fade" : {
+                   case "none" : {
+                       $imgList.eq(current).addClass("show").siblings().removeClass("show");
+                       $imgList.eq(last).addClass("show").siblings().removeClass("showt"); }break;
+                   case "fade" : {}
+                   default : {
                        $imgList.eq(current).addClass("effect-fade-in").fadeIn("slow").siblings().removeClass("effect-fade-in");
                        $imgList.eq(last).addClass("effect-fade-out").fadeOut("slow").siblings().removeClass("effect-fade-out");
-                   }break;
-                   case "none" :
-                   default : {
-                       $imgList.eq(current).addClass("show").siblings().removeClass("show");
-                       $imgList.eq(last).addClass("show").siblings().removeClass("showt");
                    }
                }
-
-
-
-
                 //这里先判断一下是否有示数栏
+                if($numContainer) {
+                    $numContainer.find(".num-ul .num-list").eq(current).addClass("active").fadeOut(0).fadeIn("slow").siblings().removeClass("active");
+                }
+            },
+            showPrev : function() {
+                console.log("right");
+                $imgList.eq(current).addClass("effect-cardX-right-in").siblings().removeClass("effect-cardX-right-in effect-cardX-in effect-cardX-out");
+                $imgList.eq(last).addClass("effect-cardX-right-out").siblings().removeClass("effect-cardX-right-out effect-cardX-in effect-cardX-out");
                 if($numContainer) {
                     $numContainer.find(".num-ul .num-list").eq(current).addClass("active").fadeOut(0).fadeIn("slow").siblings().removeClass("active");
                 }
@@ -125,7 +129,9 @@
             setInterval : 2000,
             touchSwitch : true,
             dragSwitch : true,
-            switchEffect : "none"
+            switchEffect : "cardX",
+            autoShow : true,
+            hoverStop : true
         }
         var methods = {
 
@@ -152,7 +158,7 @@
               if (defaults.touchSwitch) { methods.setSlideSwitch(); };
               if (defaults.dragSwitch) {methods.setDragSwitch()};
               //if (defaults.gotoHover) {methods.setGotoHover()};
-              //if (defaults.stopHover) {methods.startShow()};
+              if (defaults.hoverStop) {methods.hoverStop()};
 
               methods.startShow();
 
@@ -168,36 +174,32 @@
                 $container.append($numContainer);
 
                 $container.find(".num-list").on("mousemove",function(event) {
+                    last = current;
                     current =  $(event.target).index();
-                    privateMethods.show(current);
+                    if (last < current) {privateMethods.show(current);}
+                    if (last > current) {privateMethods.showPrev(current);}
                 });
 
                 return this;
             },
             setNumberStyle : function() {
-
+                //
             },
             setButton : function() {
-                $btnContainer = $("<div class='btn-container'></div>");
-                var $leftBtn = $("<button class='btn btn-left'><</button>");
-                var $rightBtn = $("<button class='btn btn-right'>></button>");
-                $btnContainer.append($leftBtn).append($rightBtn);
+                $btnContainer = $("<div class='btn-container'><button class='btn btn-left'><</button><button class='btn btn-right'>></button></div>");
                 $container.append($btnContainer);
-                $leftBtn.on("click",function(){methods.prev()})
-                $rightBtn.on("click",function(){methods.next()});
+                $btnContainer.find(".btn-left").on("click",function(){methods.prev()}).next().on("click",function(){methods.next()});
                 return this;
             },
             startShow: function () {     //开始自动轮播
-
-                privateMethods.autoShow();
-                setTimeout(methods.startShow, $container.data("setInterval"));
-                //console.log("autoShow2");
-                //console.log($container.data("setInterval"));
-
+                if ($container.data("autoShow")) {
+                    privateMethods.autoShow();
+                    setTimeout(methods.startShow, $container.data("setInterval"));
+                }
                 return this;
             },
             stopShow: function () {     //停止自动轮播
-                return this.each(clearInterval(interval));   //WWW  热死宝宝了
+                $container.data("autoShow",false); //WWW  热死宝宝了
             },
             setSlideSwitch : function () {       //设置触屏滑动切换图片
                 //jQuery不支持绑定屏幕触摸事件  采用js原生语法和节点进行绑定
@@ -227,7 +229,7 @@
                 if (current < 0) {
                     current = imgSize - 1;
                 }
-                privateMethods.show(current);
+                privateMethods.showPrev(current);
                 return this;
             },
             next: function () {      //下一张
@@ -249,6 +251,15 @@
             },
             getIndex: function() {      //获取当前标签在同辈里的索引号
                 return this.index();
+            },
+            hoverStop : function() {
+                $container.hover(
+                    function() { methods.stopShow() },
+                    function() {
+                        $container.data("autoShow",true);
+                        if( $container.data("autoShow")) {methods.startShow(); }
+                    }
+                )
             }
         }
     }

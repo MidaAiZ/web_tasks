@@ -89,18 +89,18 @@ img{
 .img-ul .effect-cardX-in{
     position: absolute;
     display: list-item;
-    animation: cardX-in 1s ease-in;
-    -webkit-animation: cardX-in steps(100,start) 1s;
-    -moz-animation: cardX-in 1s ease-in;
-    -o-animation: cardX-in 1s ease-in;
+    animation: cardX-in 1s ease-in forwards;
+    -webkit-animation: cardX-in steps(50,start) 1s forwards;
+    -moz-animation: cardX-in 1s ease-in forwards;
+    -o-animation: cardX-in 1s ease-in forwards;
 }
 .image-container .effect-cardX-out{
     position: absolute;
     display: list-item;
-    animation: cardX-out 1s ease-in;
-    -webkit-animation: cardX-out steps(100,start) 1s;
-    -moz-animation: cardX-out 1s ease-in;
-    -o-animation:  cardX-out 1s ease-in;
+    animation: cardX-out 1s ease-in forwards;
+    -webkit-animation: cardX-out steps(50,start) 1s forwards;
+    -moz-animation: cardX-out 1s ease-in forwards;
+    -o-animation:  cardX-out 1s ease-in forwards;
 }
 .img-ul .effect-slideX2{
 
@@ -127,23 +127,72 @@ img{
     to{
         opacity: 0.5;
         left: 100%;
+        z-index: -1;
+    }
+    /*100%{*/
+        /*left: 100%;*/
+        /*opacity: 0;*/
+    /*}*/
+}
+
+.img-ul .effect-cardX-right-in{
+    position: absolute;
+    display: list-item;
+    animation: cardX-right-in 1s ease-in forwards;
+    -webkit-animation: cardX-right-in steps(100,start) 1s forwards;
+    -moz-animation: cardX-right-in 1s ease-in forwards;
+    -o-animation: cardX-right-in 1s ease-in forwards;
+}
+.image-container .effect-cardX-right-out{
+    position: absolute;
+    display: list-item;
+    animation: cardX-right-out 1s ease-in forwards;
+    -webkit-animation: cardX-right-out steps(100,start) 1s forwards;
+    -moz-animation: cardX-out 1s ease-in forwards;
+    -o-animation:  cardX-right-out 1s ease-in forwards;
+}
+
+@keyframes cardX-right-in{
+    from{
+        left: 100%;
+        width: 80px;
+        opacity: 0.6;
+        /*height: 80px;;*/
+    }
+
+    to{
+        opacity: 1;
+        left: 0%;
     }
 }
+
+@keyframes cardX-right-out{
+    from{
+        right: 0%;
+        opacity: 1;
+    }
+    to{
+        right:100%;
+        opacity: 0.5;
+        z-index: -1;
+    }
+}
+
 .img-ul .effect-cardY-in{
     position: absolute;
     display: list-item;
-    animation: cardY-in 1s ease-in;
-    -webkit-animation: cardY-in steps(100,start) 1s;
-    -moz-animation: cardY-in 1s ease-in;
-    -o-animation: cardY-in 1s ease-in;
+    animation: cardY-in 1s ease-in forwards;
+    -webkit-animation: cardY-in steps(100,start) 1s forwards;
+    -moz-animation: cardY-in 1s ease-in forwards;
+    -o-animation: cardY-in 1s ease-in forwards;
 }
 .image-container .effect-cardY-out{
     position: absolute;
     display: list-item;
-    animation: cardY-out 1s ease-in;
-    -webkit-animation: cardY-out steps(100,start) 1s;
-    -moz-animation: cardY-out 1s ease-in;
-    -o-animation:  cardY-out 1s ease-in;
+    animation: cardY-out 1s ease-in forwards;
+    -webkit-animation: cardY-out steps(100,start) 1s forwards;
+    -moz-animation: cardY-out 1s ease-in forwards;
+    -o-animation:  cardY-out 1s ease-in forwards;
 }
 
 @keyframes cardY-in{
@@ -151,7 +200,6 @@ img{
         top: 100%;
         width: 80px;
         opacity: 0.6;
-        /*height: 80px;;*/
     }
 
     to{
