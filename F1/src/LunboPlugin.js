@@ -14,6 +14,7 @@
         var startX = 0;            //开始滑动屏幕时的初始坐标
         var stopX = 0;
         var current = -1;           //当前正在轮播的图片的索引号
+        var last = -1;
         var $imgList = null;       //需要轮播的图片<li>节点数组
         var $numContainer = null;  //示数栏父容器
         var containerJS = null;    //图片<li>节点的JS原生父节点
@@ -35,14 +36,16 @@
         };
 
         var privateMethods = {
-            show : function(current) {  //显示当前需要播放的图片+设置当前播放的图片对应示数栏内的标签样式
-                $imgList.eq(current).addClass("show").siblings().removeClass("show");
+            show : function() {  //显示当前需要播放的图片+设置当前播放的图片对应示数栏内的标签样式
+                $imgList.eq(current).addClass("show  effect-slideX1").siblings().removeClass("show effect-slideX1");
+                $imgList.eq(last).addClass("show effect-slideX2").siblings().removeClass("show effect-slideX2");
                 //这里先判断一下是否有示数栏
                 if($numContainer) {
-                    $numContainer.find(".num-ul .num-list").eq(current).addClass("active").siblings().removeClass("active");
+                    $numContainer.find(".num-ul .num-list").eq(current).addClass("active").fadeOut().fadeIn("slow").siblings().removeClass("active");
                 }
             },
             autoShow : function() {      //自动轮播函数 包含图片切换逻辑， 被startShow()通过setInterval调用
+                last = current;
                 if(current >= (imgSize-1)) {     //如果当前显示到了最后一张则下一张即切换到第一张
                     current = 0;
                 } else {
@@ -65,8 +68,10 @@
             },
             eventEnd : function() {
                 if (stopX - startX < -5 ) {     //左滑距离>5切换到上一张  不要我问我为什么不是下一张^O^
+                    last = current;
                     current++;
                 }else if (stopX-startX > 5) {    //右滑距离>5切换到下一张
+                    last = current;
                     current--;
                 }
                 if (current <= -1){
@@ -114,7 +119,7 @@
                     $.error("找不到图片列表！请确认list节点是否正确设置属性：class = 'image-list'")
                 }
 
-              $imgList.find("img").css({"width":$container.css("width"),"height":$container.css("height"),"overflow":"hidden"}); //控制图片大小
+              //$imgList.find("img").css({"width":$container.css("width"),"height":$container.css("height"),"overflow":"hidden"}); //控制图片大小
 
                 if ($imgList.parent().attr("id") == undefined) {
                     $imgList.parent().attr("id", "imgList-father")
@@ -189,13 +194,16 @@
             setDragSwitch : function() {
                 if (containerJS != null) {
                     containerJS.ondragstart = function(event) { privateMethods.onDragStart(event) };
-                    //containerJS.addEventListener("drag",privateMethods.onDrag(event));
+                    containerJS.addEventListener("drag",function(event) {
+                        event.preventDefault();
+                    });
                     containerJS.ondragend = function(event) {
                         event.preventDefault();
                         privateMethods.onDragOver(event)};
                 }
             },
             prev: function () {      //上一张
+                last = current;
                 current--;
                 if (current < 0) {
                     current = imgSize - 1;
@@ -204,6 +212,7 @@
                 return this;
             },
             next: function () {      //下一张
+                last = current;
                 current++;
                 if (current > (imgSize - 1)) {
                     current = 0;
@@ -213,6 +222,7 @@
             },
             gotoImg: function (index) {   //跳转到指定张数的图片
                 if ((index >= 0) && index < imgSize) {
+                    last = current;
                     current = index;           //重新定位当前播放的图片
                     privateMethods.show(index);
                 }
