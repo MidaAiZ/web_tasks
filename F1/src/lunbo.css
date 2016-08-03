@@ -1,0 +1,93 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    overfliow: hidden;
+}
+.lunbo-container{
+    width: 600px;
+    height: 400px;
+    position: relative;
+    margin: 100px auto;
+}
+.lunbo-container>.image-container{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.image-container>.img-ul{
+    width: 100%;
+    height: 100%;
+}
+.image-container .image-list{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: #ff9999;
+    display: none;
+}
+.image-container .img-ul .show{
+    display: list-item;
+}
+/*.lunbno-container>.btn-container{*/
+    /*display: none;*/
+/*}*/
+/*.lunbno-container>.btn-container:hover{*/
+    /*display: inline-block;*/
+/*}*/
+.btn-container>.btn{
+    position: absolute;
+    top: 50%;
+    margin-top: -30px;
+    width: 30px;
+    height: 60px;
+    background-color: black;
+    opacity: 0.6;
+    border:none;
+    color: white;
+    font-size: 35px;
+    text-align: center;
+    line-height: 60px;
+    display: none;
+}
+.lunbo-container:hover .btn{
+    display: inline-block;
+    cursor: pointer;
+}
+.btn-left{
+    left: 0px;
+}
+.btn-right{
+    right: 0px;
+}
+.num-container{
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    height: 20px;
+    text-align: center;
+}
+.num-container>.num-ul>.num-list{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: black;
+    opacity: 0.6;
+    margin: 3px;
+}
+.num-container>.num-ul .active{
+    background-color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
