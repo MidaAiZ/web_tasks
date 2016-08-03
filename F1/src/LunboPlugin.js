@@ -14,7 +14,7 @@
         var startX = 0;            //开始滑动屏幕时的初始坐标
         var stopX = 0;
         var current = -1;           //当前正在轮播的图片的索引号
-        var last = -1;
+        var last = 0;
         var $imgList = null;       //需要轮播的图片<li>节点数组
         var $numContainer = null;  //示数栏父容器
         var containerJS = null;    //图片<li>节点的JS原生父节点
@@ -37,11 +37,28 @@
 
         var privateMethods = {
             show : function() {  //显示当前需要播放的图片+设置当前播放的图片对应示数栏内的标签样式
-                $imgList.eq(current).addClass("show  effect-slideX1").siblings().removeClass("show effect-slideX1");
-                $imgList.eq(last).addClass("show effect-slideX2").siblings().removeClass("show effect-slideX2");
+               switch($container.data("switchEffect")){
+                   case "cardX" : {
+                       $imgList.eq(current).addClass("effect-cardX-in").siblings().removeClass("effect-cardX-in");
+                       $imgList.eq(last).addClass("effect-cardX-out").siblings().removeClass("effect-cardX-out");
+                   }break;
+                   case "cardY" : {
+                       $imgList.eq(current).addClass("effect-cardY-in").siblings().removeClass("effect-cardY-in");
+                       $imgList.eq(last).addClass("effect-cardY-out").siblings().removeClass("effect-cardY-out");}break;
+                   case "fade" : {}break;
+                   case "none" :
+                   default : {
+                       $imgList.eq(current).addClass("show").siblings().removeClass("show");
+                       $imgList.eq(last).addClass("show").siblings().removeClass("showt");
+                   }
+               }
+
+
+
+
                 //这里先判断一下是否有示数栏
                 if($numContainer) {
-                    $numContainer.find(".num-ul .num-list").eq(current).addClass("active").fadeOut().fadeIn("slow").siblings().removeClass("active");
+                    $numContainer.find(".num-ul .num-list").eq(current).addClass("active").fadeOut(0).fadeIn("slow").siblings().removeClass("active");
                 }
             },
             autoShow : function() {      //自动轮播函数 包含图片切换逻辑， 被startShow()通过setInterval调用
@@ -105,7 +122,7 @@
             setInterval : 2000,
             touchSwitch : true,
             dragSwitch : true,
-            switchEffect : "slideX"
+            switchEffect : "cardY"
         }
         var methods = {
 
@@ -125,7 +142,6 @@
                     $imgList.parent().attr("id", "imgList-father")
                 }
                 var slideNodeId = $imgList.parent().attr("id");
-
                 containerJS = $('#'+slideNodeId)[0];
 
               if (defaults.setButton) { methods.setButton(); };

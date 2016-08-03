@@ -36,9 +36,9 @@ img{
     width: 600px;
     height: 400px;
 }
-/*.image-container .img-ul .show{*/
-    /*display: list-item;*/
-/*}*/
+.image-container .img-ul .show{
+    display: list-item;
+}
 
 .btn-container>.btn{
     position: absolute;
@@ -86,51 +86,89 @@ img{
 }
 
 /*切换特效*/
-.img-ul .effect-slideX1{
+.img-ul .effect-cardX-in{
     position: absolute;
     display: list-item;
-    animation: slideX1 1s ease-in;
-    -webkit-animation: slideX1 steps(100,start) 1s;
-    -moz-animation: slideX1 1s ease-in;
-    -o-animation:  slideX1 1s ease-in;
+    animation: cardX-in 1s ease-in;
+    -webkit-animation: cardX-in steps(100,start) 1s;
+    -moz-animation: cardX-in 1s ease-in;
+    -o-animation: cardX-in 1s ease-in;
 }
-.image-container .effect-slideX2{
+.image-container .effect-cardX-out{
     position: absolute;
     display: list-item;
-    animation: slideX2 1s ease-in;
-    -webkit-animation: slideX2 steps(100,start) 1s;
-    -moz-animation: slideX1 1s ease-in;
-    -o-animation:  slideX1 1s ease-in;
+    animation: cardX-out 1s ease-in;
+    -webkit-animation: cardX-out steps(100,start) 1s;
+    -moz-animation: cardX-out 1s ease-in;
+    -o-animation:  cardX-out 1s ease-in;
 }
 .img-ul .effect-slideX2{
 
 }
-@keyframes slideX1{
-    0%{
+@keyframes cardX-in{
+    from{
         right: 100%;
         width: 80px;
         opacity: 0.6;
         /*height: 80px;;*/
     }
 
-    100%{
+    to{
         opacity: 1;
         right: 0%;
     }
 }
 
-@keyframes slideX2{
-    0%{
+@keyframes cardX-out{
+    from{
         left: 0%;
         opacity: 1;
     }
-    100%{
+    to{
         opacity: 0.5;
         left: 100%;
     }
 }
+.img-ul .effect-cardY-in{
+    position: absolute;
+    display: list-item;
+    animation: cardY-in 1s ease-in;
+    -webkit-animation: cardY-in steps(100,start) 1s;
+    -moz-animation: cardY-in 1s ease-in;
+    -o-animation: cardY-in 1s ease-in;
+}
+.image-container .effect-cardY-out{
+    position: absolute;
+    display: list-item;
+    animation: cardY-out 1s ease-in;
+    -webkit-animation: cardY-out steps(100,start) 1s;
+    -moz-animation: cardY-out 1s ease-in;
+    -o-animation:  cardY-out 1s ease-in;
+}
 
+@keyframes cardY-in{
+    from{
+        top: 100%;
+        width: 80px;
+        opacity: 0.6;
+        /*height: 80px;;*/
+    }
 
+    to{
+        opacity: 1;
+        top: 0%;
+    }
+}
+@keyframes cardY-out{
+    from{
+        bottom: 0%;
+        opacity: 1;
+    }
+    to{
+        opacity: 0.5;
+        bottom: 100%;
+    }
+}
 
 
 
