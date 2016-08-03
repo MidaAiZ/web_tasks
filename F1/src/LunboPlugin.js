@@ -45,7 +45,10 @@
                    case "cardY" : {
                        $imgList.eq(current).addClass("effect-cardY-in").siblings().removeClass("effect-cardY-in");
                        $imgList.eq(last).addClass("effect-cardY-out").siblings().removeClass("effect-cardY-out");}break;
-                   case "fade" : {}break;
+                   case "fade" : {
+                       $imgList.eq(current).addClass("effect-fade-in").fadeIn("slow").siblings().removeClass("effect-fade-in");
+                       $imgList.eq(last).addClass("effect-fade-out").fadeOut("slow").siblings().removeClass("effect-fade-out");
+                   }break;
                    case "none" :
                    default : {
                        $imgList.eq(current).addClass("show").siblings().removeClass("show");
@@ -122,7 +125,7 @@
             setInterval : 2000,
             touchSwitch : true,
             dragSwitch : true,
-            switchEffect : "cardY"
+            switchEffect : "none"
         }
         var methods = {
 

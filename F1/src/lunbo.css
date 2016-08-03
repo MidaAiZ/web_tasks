@@ -170,6 +170,10 @@ img{
     }
 }
 
-
-
+.image-container .effect-fade-in{
+    display: none;
+}
+.image-container .effect-fade-out{
+    display: none;
+}
 
