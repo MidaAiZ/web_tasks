@@ -13,7 +13,7 @@
         var interval = null;       //存放setInterval函数的返回值
         var startX = 0;            //开始滑动屏幕时的初始坐标
         var stopX = 0;
-        var current = -1;           //当前正在轮播的图片的索引号
+        var current = 0;           //当前正在轮播的图片的索引号
         var last = 0;
         var $imgList = null;       //需要轮播的图片<li>节点数组
         var $numContainer = null;  //示数栏父容器
@@ -83,7 +83,6 @@
                 event.preventDefault();
                 var touch = event.touches[0];     //开始触摸，获取第一个触摸点
                 startX=touch.pageX;             //记录X坐标
-                //containerJS.addEventListener("touchend",privateMethods.slideMove,false);   //绑定触摸滑动事件
             },
             touchMove: function(event){        //滑动切换图片的函数
                 event.preventDefault();
@@ -91,19 +90,17 @@
                 stopX = touch.pageX;
             },
             eventEnd : function() {
-                if (stopX - startX < -5 ) {     //左滑距离>5切换到上一张  不要我问我为什么不是下一张^O^
+                if (stopX - startX < -20 ) {     //左滑距离>5切换到上一张  不要我问我为什么不是下一张^O^
                     last = current;
                     current++;
-                }else if (stopX-startX > 5) {    //右滑距离>5切换到下一张
+                    if (current > (imgSize-1)){current = 0;}
+                    privateMethods.showPrev(current);
+                }else if (stopX-startX > 20) {    //右滑距离>5切换到下一张
                     last = current;
                     current--;
+                    if (current <= -1){current = imgSize-1;}
+                    privateMethods.show(current);
                 }
-                if (current <= -1){
-                    current = imgSize-1;
-                }else if (current > (imgSize-1)){
-                    current = 0;
-                }
-                privateMethods.show(current);       //切换图片
             },
 
             //PC端拖拽事件处理
@@ -111,14 +108,8 @@
             onDragStart : function(event) {
                 startX = event.clientX;
             },
-            onDrag : function(event){
-                //event.target.style.cursor();
-                console.log(event.target+"  is onDrag");
-            },
             onDragOver : function(event) {
                 stopX = event.clientX;
-                //event.target.style.cursor("pointer");
-                console.log("dragover");
                 privateMethods.eventEnd();
             }
         }
@@ -160,6 +151,7 @@
               //if (defaults.gotoHover) {methods.setGotoHover()};
               if (defaults.hoverStop) {methods.hoverStop()};
 
+              $imgList.eq(current).addClass("effect-cardX-in");
               methods.startShow();
 
                 return this;
@@ -193,9 +185,9 @@
             },
             startShow: function () {     //开始自动轮播
                 if ($container.data("autoShow")) {
-                    privateMethods.autoShow();
-                    setTimeout(methods.startShow, $container.data("setInterval"));
+                    setTimeout(privateMethods.autoShow, $container.data("setInterval"));
                 }
+                setTimeout(methods.startShow, 2*$container.data("setInterval"));
                 return this;
             },
             stopShow: function () {     //停止自动轮播
@@ -206,6 +198,7 @@
                 if (containerJS != null) {
                     containerJS.addEventListener("touchstart", privateMethods.touchStart);
                     containerJS.addEventListener("touchmove", privateMethods.touchMove);
+                    containerJS.addEventListener("touchup",function(){console.log("touchup")});
                     containerJS.addEventListener("touchend", privateMethods.eventEnd);
                 } else {
                     $.error("滑动事件绑定监听失败，获取不到目标节点");
@@ -254,11 +247,9 @@
             },
             hoverStop : function() {
                 $container.hover(
-                    function() { methods.stopShow() },
-                    function() {
-                        $container.data("autoShow",true);
-                        if( $container.data("autoShow")) {methods.startShow(); }
-                    }
+                    //function() { methods.stopShow() },
+                    function (){$container.data("autoShow",false);},
+                    function() {$container.data("autoShow",true);}
                 )
             }
         }
