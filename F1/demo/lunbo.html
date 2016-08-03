@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lunbo1</title>
+    <link href="../src/lunbo.css" rel="stylesheet" type="text/css">
+    <script src="../framework/jquery.js"></script>
+    <script src="../src/LunboPlugin.js"></script>
+</head>
+<body>
+    <div class="lunbo-container" id="lunbo-contianer">
+        <div class="image-container">
+            <ul class="img-ul">
+               <li class="image-list"><a href="#"><img src="../image/1.jpg"></a></li>
+               <li class="image-list"><a href="#"><img src="../image/2.jpeg"></a></li>
+               <li class="image-list show"><a href="#"><img src="../image/3.jpg"></a></li>
+               <li class="image-list"><a href="#"><img src="../image/4.jpg"></a></li>
+               <li class="image-list"><a href="#"><img src="../image/5.jpg"></a></li>
+               <li class="image-list"><a href="#"><img src="../image/6.jpg"></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var myLunbo = new $(".lunbo-container").createLunbo(
+                {   setNumber : true,
+                    setButton : true,
+                    setInterval : 500
+        });
+    </script>
+</body>
+</html>
