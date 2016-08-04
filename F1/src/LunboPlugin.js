@@ -7,7 +7,7 @@
 
     var inner = function(container) {
 
-        var $container = container;
+        var $container = container;     //轮播容器
 
         var imgSize = 0;           //需要轮播的图片张数
         var startX = 0;            //开始滑动屏幕时的初始坐标
@@ -18,8 +18,7 @@
         var $numContainer = null;  //示数栏父容器
         var containerJS = null;    //图片<li>节点的JS原生父节点
         var $btnContainer = null;
-
-        var index = 0;
+        var hasInit = false;
         this.lunbo = function () {
             var method = arguments[0];
             if(methods[method]) {          //当传入方法存在时调用指定方法
@@ -31,16 +30,14 @@
             } else {                        //参数错误 方法不存在
                 $.error("函数: " + method + "不存在或未输入参数！");
             }
-
         };
 
         var privateMethods = {
             show : function() {  //显示当前需要播放的图片+设置当前播放的图片对应示数栏内的标签样式
                switch($container.data("switchEffect")){
                    case "cardX" : {
-                       if(current > last){
-                           console.log("left"+"last:"+last+"  current:"+current)
-                           $imgList.eq(current).addClass("effect-cardX-in").siblings().removeClass("effect-cardX-in effect-cardX-right-in effect-cardX-right-out");
+                       if(current < last){
+                           $imgList.eq(current).addClass("effect-cardX-in").siblings().removeAttr("effect-cardX-in effect-cardX-right-in effect-cardX-right-out");
                            $imgList.eq(last).addClass("effect-cardX-out").siblings().removeClass("effect-cardX-out effect-cardX-right-in effect-cardX-right-out");
                        } else {
                            $imgList.eq(current).addClass("effect-cardX-right-in").siblings().removeClass("effect-cardX-right-in effect-cardX-in effect-cardX-out");
@@ -55,7 +52,7 @@
                }
                 //这里先判断一下是否有示数栏
                 if($numContainer) {
-                    $numContainer.find(".num-ul .num-list").eq(current).addClass("active").fadeOut(0).fadeIn("slow").siblings().removeClass("active");
+                    $numContainer.find(".num-list").eq(current).addClass("active").fadeOut(0).fadeIn("slow").siblings().removeClass("active");
                 }
             },
             autoShow : function() {      //自动轮播函数 包含图片切换逻辑， 被startShow()通过setInterval调用
@@ -89,7 +86,7 @@
                     current--;
                     if (current <= -1){current = imgSize-1;}
                 }
-                privateMethods.show(current);
+                privateMethods.show("prev");
             },
 
             //PC端拖拽事件处理
@@ -109,14 +106,16 @@
             setInterval : 3000,
             touchSwitch : true,
             dragSwitch : true,
-            switchEffect : "cardX",
+            switchEffect : "none",
             autoShow : true,
-            hoverStop : true
+            hoverStop : true,
+            numStyle : "rect"
         }
         var methods = {
 
             init: function() {     //初始化，获取图片父级容器和位于图片底部用于显示图片数量的示数栏父级容器
-                $imgList = $container.find(".image-container .img-ul li");
+                if (hasInit) {return this}
+                $imgList = $container.find(".image-container li");
                 imgSize = $imgList.size();
                 console.log(imgSize);
                 $container.data($.extend({},defaults,arguments[0]));
@@ -125,19 +124,13 @@
                     $.error("找不到图片列表！请确认list节点是否正确设置属性：class = 'image-list'")
                 }
 
-              //$imgList.find("img").css({"width":$container.css("width"),"height":$container.css("height"),"overflow":"hidden"}); //控制图片大小
+              $imgList.find("img").css({"width":$imgList.parent().css("width"),"height":$imgList.parent().css("height"),"overflow":"hidden"}); //控制图片大小
 
-                if ($imgList.parent().attr("id") == undefined) {
-                    $imgList.parent().attr("id", "imgList-father")
-                }
-                var slideNodeId = $imgList.parent().attr("id");
-                containerJS = $('#'+slideNodeId)[0];
-
+                containerJS = $imgList.parent()[0];
               if (defaults.setButton) { methods.setButton(); };
               if (defaults.setNumber) { methods.setNumber(); };
               if (defaults.touchSwitch) { methods.setSlideSwitch(); };
               if (defaults.dragSwitch) {methods.setDragSwitch()};
-              //if (defaults.gotoHover) {methods.setGotoHover()};
               if (defaults.hoverStop) {methods.hoverStop()};
 
               if($container.data("switchEffect") === "cardX"){
@@ -153,12 +146,12 @@
               return this;
             },
             setNumber: function () {       //设置示数栏样式
+                if ($numContainer !== null) {return this};
                 $numContainer = $("<div class='num-container'><ul class='num-ul'></ul></div>");
                 for (var i = 0 ; i < imgSize ; i++){
                     $numContainer.find(".num-ul").append($("<li class='num-list'></li>"));
-                    console.log( i+":"+$numContainer.find(".num-ul").length);
                 }
-                $numContainer.find(".num-ul .num-list").eq(current).addClass("active").siblings().removeClass("active");
+                $numContainer.find(".num-list").addClass($container.data("numStyle")).end().eq(current).addClass("active").siblings().removeClass("active");
                 $container.append($numContainer);
 
                 $container.find(".num-list").on("mouseenter",function(event) {
@@ -169,17 +162,14 @@
 
                 return this;
             },
-            setNumberStyle : function() {
-                //
-            },
             setButton : function() {
+                if ($btnContainer !== null){ return this};
                 $btnContainer = $("<div class='btn-container'><button class='btn btn-left'><</button><button class='btn btn-right'>></button></div>");
                 $container.append($btnContainer);
                 $btnContainer.find(".btn-left").on("click",function(){methods.prev()}).next().on("click",function(){methods.next()});
                 return this;
             },
             startShow: function () {     //开始自动轮播
-
                 if ($container.data("autoShow")) {setTimeout(privateMethods.autoShow(), $container.data("setInterval"));};
                 setTimeout(methods.startShow, $container.data("setInterval"));
                 return this;
@@ -216,7 +206,7 @@
                 if (current < 0) {
                     current = imgSize - 1;
                 }
-                privateMethods.show(current);
+                privateMethods.show();
                 return this;
             },
             next: function () {      //下一张
@@ -225,15 +215,7 @@
                 if (current > (imgSize - 1)) {
                     current = 0;
                 }
-                privateMethods.show(current);
-                return this;
-            },
-            gotoImg: function (index) {   //跳转到指定张数的图片
-                if ((index >= 0) && index < imgSize) {
-                    last = current;
-                    current = index;           //重新定位当前播放的图片
-                    privateMethods.show(index);
-                }
+                privateMethods.show();
                 return this;
             },
             getIndex: function() {      //获取当前标签在同辈里的索引号
@@ -241,7 +223,6 @@
             },
             hoverStop : function() {
                 $container.hover(
-                    //function() { methods.stopShow() },
                     function (){$container.data("autoShow",false);},
                     function() {$container.data("autoShow",true);}
                 )
@@ -251,7 +232,7 @@
 
     $.fn.createLunbo = function() {
         var newLunbo = new inner(this)
-        if(arguments[0] === "object"){
+        if(typeof arguments[0] === "object"){
             newLunbo.lunbo(arguments[0]);
             return newLunbo;
         } else {
@@ -261,6 +242,4 @@
 
     }
 })(jQuery);
-/**
- * Created by Sinner on 2016/8/3.
- */
+

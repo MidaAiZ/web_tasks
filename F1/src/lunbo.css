@@ -2,6 +2,10 @@
     margin: 0px;
     padding: 0px;
     list-style: none;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 .lunbo-container{
     width: 600px;
@@ -17,10 +21,9 @@
     left: 0px;
     overflow: hidden;
 }
-.image-container>.img-ul{
+.image-container>*{
     width: 100%;
     height: 100%;
-    /*overflow: hidden;*/
 }
 .image-container li{
     position: absolute;
@@ -29,14 +32,12 @@
     height: 100%;
     background-color: #ff9999;
     display: none;
-    /*display: list-item;*/
-
 }
 img{
     width: 600px;
     height: 400px;
 }
-.image-container .img-ul .show{
+.image-container .show{
     display: list-item;
 }
 
@@ -67,12 +68,15 @@ img{
 }
 .num-container{
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     width: 100%;
-    height: 20px;
+    height: auto;
     text-align: center;
 }
-.num-container>.num-ul>.num-list{
+.num-container *{
+    overflow: hidden;
+}
+.num-container .circle{
     display: inline-block;
     width: 15px;
     height: 15px;
@@ -82,7 +86,16 @@ img{
     margin: 3px;
     cursor: pointer;
 }
-.num-container>.num-ul .active{
+.num-container .rect{
+    display: inline-block;
+    width: 15px;
+    height: 8px;
+    background-color: black;
+    opacity: 0.6;
+    margin: 3px;
+    cursor: pointer;
+}
+.num-container .active{
     background-color: red;
 }
 
@@ -130,10 +143,6 @@ img{
         left: 100%;
         z-index: -1;
     }
-    /*100%{*/
-        /*left: 100%;*/
-        /*opacity: 0;*/
-    /*}*/
 }
 
 .img-ul .effect-cardX-right-in{
@@ -158,7 +167,6 @@ img{
         left: 100%;
         width: 80px;
         opacity: 0.6;
-        /*height: 80px;;*/
     }
 
     to{
@@ -182,5 +190,3 @@ img{
 .image-container .effect-fade{
     display: none;
 }
-
-
