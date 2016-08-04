@@ -195,7 +195,19 @@
             numStyle : "circle",
             switchEffect : "none"
         });
-        setTimeout(function(){ myLunbo3.lunbo("stopShow")},5000);
+        setTimeout(function(){ myLunbo3.lunbo("stopShow",true)},5000);
+        setTimeout(function(){ myLunbo3.lunbo("stopShow",false)},10000);
+        setTimeout(function(){ myLunbo3.lunbo("hoverStop",false)},5000);
+        setTimeout(function(){ myLunbo3.lunbo("hoverStop",true)},10000);
+        setTimeout(function(){ myLunbo2.lunbo("setDragSwitch",false)},5000);
+        setTimeout(function(){ myLunbo2.lunbo("setDragSwitch",true)},8000);
+        setTimeout(function(){ myLunbo2.lunbo("setSlideSwitch",false)},5000);
+        setTimeout(function(){ myLunbo2.lunbo("setSlideSwitch",true)},8000);
+        setTimeout(function(){ myLunbo2.lunbo("setButton",false)},3000);
+        setTimeout(function(){ myLunbo2.lunbo("setButton",true)},7000);
+//        setTimeout(function(){ myLunbo3.lunbo("setNumber",false)},5000);
+//        setTimeout(function(){ myLunbo3.lunbo("setNumber",true)},10000);
+        setTimeout(function(){ myLunbo3.lunbo("setNumstyle","rect")},2000);
     </script>
 </body>
 </html>

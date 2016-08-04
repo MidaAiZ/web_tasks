@@ -18,7 +18,9 @@
         var $numContainer = null;  //示数栏父容器
         var containerJS = null;    //图片<li>节点的JS原生父节点
         var $btnContainer = null;
-        var hasInit = false;
+        var isInited = false;
+
+
         this.lunbo = function () {
             var method = arguments[0];
             if(methods[method]) {          //当传入方法存在时调用指定方法
@@ -66,38 +68,46 @@
             },
 
             //移动端触屏事件处理
-            touchStart : function (event) {      //屏幕触摸开始时调用的函数  在安卓上可以不用监听touchstart事件，但是ios必须要，否则无法触发滑动事件
+            touchStart : function (event) {      //屏幕触摸开始时触发
                 event.preventDefault();
                 var touch = event.touches[0];     //开始触摸，获取第一个触摸点
                 startX=touch.pageX;             //记录X坐标
             },
-            touchMove : function(event){        //滑动切换图片的函数
+            touchMove : function(event){        //触摸滑动时触发
                 event.preventDefault();
                 var touch = event.touches[0];      //获取滑动的第一点，记录X坐标
                 stopX = touch.pageX;
             },
-            eventEnd : function() {
-                if (stopX - startX < -20 ) {     //左滑距离>5切换到上一张  不要我问我为什么不是下一张^O^
+            touchEnd : function() {
+              privateMethods.eventEnd();     //切换图片 endEvent()是触摸结束后图片切换的逻辑函数，函数在下方
+            },
+            //PC端拖拽切图事件处理
+            // 值得注意的是各主流浏览器对图片拖拽的处理都不一样 360浏览器甚至会在拖拽后打开新网页 暂时无法阻止类似行为
+            onDragStart : function(event) {     //拖拽开始时触发
+                startX = event.clientX;          //开始拖拽，获取开始坐标;
+            },
+            onDragEnd : function(event) {      //拖拽结束时触发
+                event.preventDefault();
+                stopX = event.clientX;           //结束拖拽，获取结束坐标
+                privateMethods.eventEnd();
+            },
+            eventEnd : function() {             //触摸或拖拽结束时触发 负责图片的切换逻辑
+                if (stopX - startX < -20 ) {     //左滑距离>5切换到上一张
                     last = current;
                     current++;
                     if (current > (imgSize-1)){current = 0;}
+                    privateMethods.show("prev");
                 }else if (stopX-startX > 20) {    //右滑距离>5切换到下一张
                     last = current;
                     current--;
                     if (current <= -1){current = imgSize-1;}
+                    privateMethods.show();
                 }
-                privateMethods.show("prev");
             },
 
             //PC端拖拽事件处理
 
-            onDragStart : function(event) {
-                startX = event.clientX;
-            },
-            onDragOver : function(event) {
-                stopX = event.clientX;
-                privateMethods.eventEnd();
-            }
+
         }
 
         var defaults = {
@@ -114,7 +124,7 @@
         var methods = {
 
             init: function() {     //初始化，获取图片父级容器和位于图片底部用于显示图片数量的示数栏父级容器
-                if (hasInit) {return this}
+
                 $imgList = $container.find(".image-container li");
                 imgSize = $imgList.size();
                 console.log(imgSize);
@@ -126,12 +136,13 @@
 
               $imgList.find("img").css({"width":$imgList.parent().css("width"),"height":$imgList.parent().css("height"),"overflow":"hidden"}); //控制图片大小
 
-                containerJS = $imgList.parent()[0];
-              if (defaults.setButton) { methods.setButton(); };
-              if (defaults.setNumber) { methods.setNumber(); };
-              if (defaults.touchSwitch) { methods.setSlideSwitch(); };
-              if (defaults.dragSwitch) {methods.setDragSwitch()};
-              if (defaults.hoverStop) {methods.hoverStop()};
+              containerJS = $imgList.parent()[0];
+
+              methods.setButton($container.data("setButton"));
+              methods.setNumber($container.data("setNumber"));
+              methods.setSlideSwitch($container.data("touchSwitch"));
+              methods.setDragSwitch($container.data("dragSwitch"));
+              methods.hoverStop($container.data("hoverStop"));
 
               if($container.data("switchEffect") === "cardX"){
                  $imgList.eq(current).addClass("effect-cardX-in");
@@ -140,33 +151,53 @@
               } else {
                   $imgList.eq(current).addClass("effect-fade");
               }
-
-              methods.startShow();
+              if (!isInited) { methods.startShow();};
+              isInited = true;
 
               return this;
             },
-            setNumber: function () {       //设置示数栏样式
-                if ($numContainer !== null) {return this};
-                $numContainer = $("<div class='num-container'><ul class='num-ul'></ul></div>");
-                for (var i = 0 ; i < imgSize ; i++){
-                    $numContainer.find(".num-ul").append($("<li class='num-list'></li>"));
+            setNumber: function (opt) {       //设置示数栏样式
+                if (opt === false) {
+                    $numContainer.remove();
+                    $numContainer = null;
+                } else {
+                    if ($numContainer !== null) {return this};  //防止重复设置示数栏
+                    $numContainer = $("<div class='num-container'><ul class='num-ul'></ul></div>");
+                    for (var i = 0 ; i < imgSize ; i++){
+                        $numContainer.find(".num-ul").append($("<li class='num-list'></li>"));
+                    }
+                    $container.append($numContainer);
+                    methods.setNumstyle();
+                    $container.find(".num-list").on("mouseenter",function(event) {
+                        last = current;
+                        current =  $(event.target).index();
+                        privateMethods.show(current);
+                    });
                 }
-                $numContainer.find(".num-list").addClass($container.data("numStyle")).end().eq(current).addClass("active").siblings().removeClass("active");
-                $container.append($numContainer);
-
-                $container.find(".num-list").on("mouseenter",function(event) {
-                    last = current;
-                    current =  $(event.target).index();
-                    privateMethods.show(current);
-                });
-
                 return this;
             },
-            setButton : function() {
-                if ($btnContainer !== null){ return this};
-                $btnContainer = $("<div class='btn-container'><button class='btn btn-left'><</button><button class='btn btn-right'>></button></div>");
-                $container.append($btnContainer);
-                $btnContainer.find(".btn-left").on("click",function(){methods.prev()}).next().on("click",function(){methods.next()});
+            setNumstyle : function(opt) {
+                if (!$numContainer) {return this}
+                if(typeof opt === "string"){
+                    var oldStyle =  $container.data("numStyle");
+                    $container.data("numStyle",opt)
+                }
+                $numContainer.find(".num-list").removeClass(oldStyle).addClass($container.data("numStyle")).end().eq(current).addClass("active").siblings().removeClass("active");
+            },
+            setButton : function(opt) {
+                if (opt === false) {
+                    $btnContainer.remove();
+                    $btnContainer = null
+                } else {
+                    if ($btnContainer !== null) {return this};  //防止重复设置按钮
+                    $btnContainer = $("<div class='btn-container'><button class='btn btn-left'><</button><button class='btn btn-right'>></button></div>");
+                    $container.append($btnContainer);
+                    $btnContainer.find(".btn-left").on("click", function () {
+                        methods.prev()
+                    }).next().on("click", function () {
+                        methods.next()
+                    });
+                }
                 return this;
             },
             startShow: function () {     //开始自动轮播
@@ -174,33 +205,39 @@
                 setTimeout(methods.startShow, $container.data("setInterval"));
                 return this;
             },
-            stopShow: function () {     //停止自动轮播
-                $container.data("autoShow",false); //WWW  热死宝宝了
+            stopShow: function (opt) {     //停止自动轮播
+                if (!opt) {     //当传入false时继续图片轮播
+                    $container.data("autoShow",true);
+                } else {    //传入true或未传入参数默认停止图片轮播
+                    $container.data("autoShow",false);
+                }
             },
-            setSlideSwitch : function () {       //设置触屏滑动切换图片
+            setSlideSwitch : function (opt) {       //设置触屏滑动切换图片
                 //jQuery不支持绑定屏幕触摸事件  采用js原生语法和节点进行绑定
-                if (containerJS != null) {
-                    containerJS.addEventListener("touchstart", privateMethods.touchStart);
-                    containerJS.addEventListener("touchmove", privateMethods.touchMove);
-                    containerJS.addEventListener("touchup",function(){console.log("touchup")});
-                    containerJS.addEventListener("touchend", privateMethods.eventEnd);
-                } else {
-                    $.error("滑动事件绑定监听失败，获取不到目标节点");
+                if (containerJS !== null && (opt || opt === undefined)) {    //传入true或未传入参数默认设置触屏切图
+                    containerJS.addEventListener("touchstart", privateMethods.touchStart,false);
+                    containerJS.addEventListener("touchmove", privateMethods.touchMove,false);
+                    containerJS.addEventListener("touchend", privateMethods.touchEnd,false);
+                } else if(containerJS !== null) {   //传入false停止触屏切图
+                    try{    //包裹在try-catch中 防止用户未绑定事件企图就解绑的情况
+                    containerJS.removeEventListener("touchstart",privateMethods.touchStart);
+                    containerJS.removeEventListener("touchmove",privateMethods.touchMove);
+                    containerJS.removeEventListener("touchend",privateMethods.touchEnd);
+                    } catch (error){ console.warn(error)}
                 }
                 return this;
             },
-            setDragSwitch : function() {
-                if (containerJS != null) {
-                    containerJS.ondragstart = function(event) { privateMethods.onDragStart(event) };
-                    containerJS.addEventListener("drag",function(event) {
-                        event.preventDefault();
-                    });
-                    containerJS.ondragend = function(event) {
-                        event.preventDefault();
-                        privateMethods.onDragOver(event)};
+            setDragSwitch : function(opt) {
+                if (containerJS !== null && (opt || opt === undefined)) {     //传入true或未传入参数默认设置拖拽切图
+                    containerJS.ondragstart = privateMethods.onDragStart;
+                    containerJS.ondragend = privateMethods.onDragEnd;
+                } else if (containerJS !== null){   //传入false停止拖拽切图
+                    containerJS.ondragstart = {};
+                    containerJS.ondragend = {};
                 }
+                return this;
             },
-            prev: function () {      //上一张
+            prev: function () {      //切换到上一张
                 last = current;
                 current--;
                 if (current < 0) {
@@ -209,7 +246,7 @@
                 privateMethods.show();
                 return this;
             },
-            next: function () {      //下一张
+            next: function () {      //切换到下一张
                 last = current;
                 current++;
                 if (current > (imgSize - 1)) {
@@ -218,14 +255,17 @@
                 privateMethods.show();
                 return this;
             },
-            getIndex: function() {      //获取当前标签在同辈里的索引号
-                return this.index();
+            getIndex: function() {
+                return current;     //返回当前正在播放的图片索引号
             },
-            hoverStop : function() {
-                $container.hover(
-                    function (){$container.data("autoShow",false);},
-                    function() {$container.data("autoShow",true);}
-                )
+            hoverStop : function(opt) {
+                if (opt || opt === undefined) {  //传入ture或未差传入参数时默认设置鼠标进入时停止轮播
+                     $container.hover(
+                        function (){$container.data("autoShow",false);},
+                        function() {$container.data("autoShow",true);});
+                } else {
+                    $container.off('mouseenter').unbind('mouseleave');   //传入false解绑 鼠标滑入后将不再停止轮播
+                }
             }
         }
     }
@@ -243,3 +283,4 @@
     }
 })(jQuery);
 
+//
