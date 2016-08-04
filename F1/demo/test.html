@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <title>lunbo1</title>
     <link href="../src/lunbo.css" rel="stylesheet" type="text/css">
-    <link href="../src/test.css" rel="stylesheet" type="text/css">
     <script src="../framework/jquery.js"></script>
     <script src="../src/LunboPlugin.js"></script>
+    <style>
+        .container{
+            text-align: center;
+        }
+        .con{
+            width: 600px;
+            text-align: center;
+            display: inline-block;
+            margin: 50px;;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="container1"><div class="lunbo-container" id="lunbo-contianer1">
+        <div class="con container1"><div class="lunbo-container" id="lunbo-contianer1">
             <div class="image-container">
                 <ul class="img-ul">
                     <li><a href="#"><img src="../image/1.jpg" ondragstart="return false" draggable="false"></a></li>
@@ -148,7 +158,7 @@
                 </ul>
             </div>
         </div></div>
-        <div class="container2"><div class="lunbo-container" id="lunbo-contianer2">
+        <div class="con container2"><div class="lunbo-container" id="lunbo-contianer2">
             <div class="image-container">
                 <ul class="img-ul">
                     <li><a href="#"><img src="../image/1.jpg" ondragstart="return false" draggable="false"></a></li>
@@ -160,7 +170,7 @@
                 </ul>
             </div>
         </div></div>
-        <div class="container3">    <div class="lunbo-container" id="lunbo-contianer3">
+        <div class="con container3">    <div class="lunbo-container" id="lunbo-contianer3">
             <div class="image-container">
                 <ul class="img-ul">
                     <li><a href="#"><img src="../image/1.jpg" ondragstart="return false" draggable="false"></a></li>
@@ -174,10 +184,11 @@
         </div></div>
     </div>
     <script>
-        var myLunbo = new $("#lunbo-contianer1").createLunbo(
+        alert("这是插件功能的测试网页！\n建议缩小网页使三个轮播图在同一行以便观察效果");
+        var myLunbo1 = new $("#lunbo-contianer1").createLunbo(
                 {   setNumber : true,
                     setButton : true,
-                    setInterval : 300,
+                    setInterval : 1000,
                     numStyle : "circle",
                     switchEffect : "cardX"
                 }
@@ -195,24 +206,21 @@
             numStyle : "circle",
             switchEffect : "none"
         });
-        setTimeout(function(){ myLunbo3.lunbo("stopShow",true)},5000);
-        setTimeout(function(){ myLunbo3.lunbo("stopShow",false)},10000);
-        setTimeout(function(){ myLunbo3.lunbo("hoverStop",false)},5000);
-        setTimeout(function(){ myLunbo3.lunbo("hoverStop",true)},10000);
-        setTimeout(function(){ myLunbo2.lunbo("setDragSwitch",false)},5000);
-        setTimeout(function(){ myLunbo2.lunbo("setDragSwitch",true)},8000);
-        setTimeout(function(){ myLunbo2.lunbo("setSlideSwitch",false)},5000);
-        setTimeout(function(){ myLunbo2.lunbo("setSlideSwitch",true)},8000);
-        setTimeout(function(){ myLunbo2.lunbo("setButton",false)},3000);
-        setTimeout(function(){ myLunbo2.lunbo("setButton",true)},7000);
-//        setTimeout(function(){ myLunbo3.lunbo("setNumber",false)},5000);
-//        setTimeout(function(){ myLunbo3.lunbo("setNumber",true)},10000);
-        setTimeout(function(){ myLunbo3.lunbo("setNumstyle","rect")},2000);
+
+        //函数功能测试
+        setTimeout(function(){ myLunbo3.lunbo("stopShow",true)},5000);          //停止自动播放  5秒后停止轮播  结果：正常
+        setTimeout(function(){ myLunbo3.lunbo("stopShow",false)},10000);        //开始自动播放  10秒后恢复轮播  结果：正常
+        setTimeout(function(){ myLunbo3.lunbo("hoverStop",false)},5000);        //取消鼠标滑过暂停播放的功能 5秒后停止该功能  结果：正常
+        setTimeout(function(){ myLunbo3.lunbo("hoverStop",true)},10000);        //恢复鼠标滑过暂停播放的功能  10秒后恢复该功能  结果：正常
+        setTimeout(function(){ myLunbo2.lunbo("setDragSwitch",false)},5000);    //取消拖拽切换图片  5秒后停止该功能  结果：正常
+        setTimeout(function(){ myLunbo2.lunbo("setDragSwitch",true)},8000);     //恢复拖拽切换图片  8秒后恢复该功能  结果：正常
+        setTimeout(function(){ myLunbo2.lunbo("setSlideSwitch",false)},5000);   //取消触屏切换图片  5秒后停止该功能  结果：正常
+        setTimeout(function(){ myLunbo2.lunbo("setSlideSwitch",true)},8000);    //恢复触屏切换图片  8秒后恢复该功能  结果：正常
+        setTimeout(function(){ myLunbo2.lunbo("setButton",false)},2000);        //不显示按钮  2秒后隐藏按钮  结果：正常
+        setTimeout(function(){ myLunbo2.lunbo("setButton",true)},4000);         //显示按钮  4秒后恢复按钮  结果：正常
+        setTimeout(function(){ myLunbo1.lunbo("setNumber",false)},3000);        //不显示示数栏  3秒后隐藏示数栏  结果：正常
+        setTimeout(function(){ myLunbo1.lunbo("setNumber",true)},5000);         //显示示数栏  5秒后恢复示数栏  结果：正常
+        setTimeout(function(){ myLunbo1.lunbo("setNumstyle","rect")},7000);     //显示示数栏  7秒后改变示数栏样式  结果：正常
     </script>
 </body>
 </html>
-<!--{   setNumber : true,-->
-<!--setButton : true,-->
-<!--setInterval : 3000,-->
-<!--switchEffect : "cardX"-->
-<!--}-->
