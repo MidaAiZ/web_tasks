@@ -80,6 +80,7 @@ img{
     background-color: black;
     opacity: 0.6;
     margin: 3px;
+    cursor: pointer;
 }
 .num-container>.num-ul .active{
     background-color: red;
@@ -178,50 +179,8 @@ img{
     }
 }
 
-.img-ul .effect-cardY-in{
-    position: absolute;
-    display: list-item;
-    animation: cardY-in 1s ease-in forwards;
-    -webkit-animation: cardY-in steps(100,start) 1s forwards;
-    -moz-animation: cardY-in 1s ease-in forwards;
-    -o-animation: cardY-in 1s ease-in forwards;
-}
-.image-container .effect-cardY-out{
-    position: absolute;
-    display: list-item;
-    animation: cardY-out 1s ease-in forwards;
-    -webkit-animation: cardY-out steps(100,start) 1s forwards;
-    -moz-animation: cardY-out 1s ease-in forwards;
-    -o-animation:  cardY-out 1s ease-in forwards;
-}
-
-@keyframes cardY-in{
-    from{
-        top: 100%;
-        width: 80px;
-        opacity: 0.6;
-    }
-
-    to{
-        opacity: 1;
-        top: 0%;
-    }
-}
-@keyframes cardY-out{
-    from{
-        bottom: 0%;
-        opacity: 1;
-    }
-    to{
-        opacity: 0.5;
-        bottom: 100%;
-    }
-}
-
-.image-container .effect-fade-in{
+.image-container .effect-fade{
     display: none;
 }
-.image-container .effect-fade-out{
-    display: none;
-}
+
 
