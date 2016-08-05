@@ -188,18 +188,19 @@
         var myLunbo1 = new $("#lunbo-contianer1").createLunbo(
                 {   setNumber : true,
                     setButton : true,
-                    setInterval : 1000,
+                    setInterval : 3000,
                     numStyle : "circle",
-                    switchEffect : "cardX"
+                    switchEffect : "card"
                 }
                 );
-        var myLunbo2 = new $("#lunbo-contianer2").createLunbo(
-                {   setNumber : true,
-                    setButton : true,
-                    setInterval :1500,
-                    numStyle : "rect",
-                    switchEffect : "fade"
-        });
+
+        var myLunbo2 = new $("#lunbo-contianer2").createLunbo({switchEffect : "fade"});
+        //测试链式功能
+        myLunbo2.lunbo("setDragSwitch",true).lunbo("setSlideSwitch",false).lunbo("next").lunbo("prev").lunbo("gotoImg",3).lunbo("gotoImg","传入字符无效")
+                .lunbo("setButton",false).lunbo("hoverStop",false).lunbo("setNumStyle","circle")
+                .lunbo("setInterval",2000).lunbo("setInterval","传入字符无效");
+//                alert(myLunbo2.lunbo("getCurrent"));
+
         var myLunbo3 = new $("#lunbo-contianer3").createLunbo(  {   setNumber : true,
             setButton : true,
             setInterval : 500,
@@ -220,7 +221,7 @@
         setTimeout(function(){ myLunbo2.lunbo("setButton",true)},4000);         //显示按钮  4秒后恢复按钮  结果：正常
         setTimeout(function(){ myLunbo1.lunbo("setNumber",false)},3000);        //不显示示数栏  3秒后隐藏示数栏  结果：正常
         setTimeout(function(){ myLunbo1.lunbo("setNumber",true)},5000);         //显示示数栏  5秒后恢复示数栏  结果：正常
-        setTimeout(function(){ myLunbo1.lunbo("setNumstyle","rect")},7000);     //显示示数栏  7秒后改变示数栏样式  结果：正常
+        setTimeout(function(){ myLunbo1.lunbo("setNumStyle","rect")},7000);     //显示示数栏  7秒后改变示数栏样式  结果：正常
     </script>
 </body>
 </html>

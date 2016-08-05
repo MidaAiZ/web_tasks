@@ -100,31 +100,27 @@ img{
 }
 
 /*切换特效*/
-.img-ul .effect-cardX-in{
+.image-container .card-in{
     position: absolute;
     display: list-item;
-    animation: cardX-in 1s ease-in forwards;
-    -webkit-animation: cardX-in steps(50,start) 1s forwards;
-    -moz-animation: cardX-in 1s ease-in forwards;
-    -o-animation: cardX-in 1s ease-in forwards;
+    animation: card-in 1s ease-in forwards;
+    -webkit-animation: card-in steps(100,start) 1s forwards;
+    -moz-animation: card-in 1s ease-in forwards;
+    -o-animation: card-in 1s ease-in forwards;
 }
-.image-container .effect-cardX-out{
+.image-container .card-out{
     position: absolute;
     display: list-item;
-    animation: cardX-out 1s ease-in forwards;
-    -webkit-animation: cardX-out steps(50,start) 1s forwards;
-    -moz-animation: cardX-out 1s ease-in forwards;
-    -o-animation:  cardX-out 1s ease-in forwards;
+    animation: card-out 1s ease-in forwards;
+    -webkit-animation: card-out steps(100,start) 1s forwards;
+    -moz-animation: card-out 1s ease-in forwards;
+    -o-animation:  card-out 1s ease-in forwards;
 }
-.img-ul .effect-slideX2{
-
-}
-@keyframes cardX-in{
+@keyframes card-in{
     from{
         right: 100%;
         width: 80px;
         opacity: 0.6;
-        /*height: 80px;;*/
     }
 
     to{
@@ -133,7 +129,7 @@ img{
     }
 }
 
-@keyframes cardX-out{
+@keyframes card-out{
     from{
         left: 0%;
         opacity: 1;
@@ -141,28 +137,27 @@ img{
     to{
         opacity: 0.5;
         left: 100%;
-        z-index: -1;
     }
 }
 
-.img-ul .effect-cardX-right-in{
+.image-container .card-right-in{
     position: absolute;
     display: list-item;
-    animation: cardX-right-in 1s ease-in forwards;
-    -webkit-animation: cardX-right-in steps(100,start) 1s forwards;
-    -moz-animation: cardX-right-in 1s ease-in forwards;
-    -o-animation: cardX-right-in 1s ease-in forwards;
+    animation: card-right-in 1s ease-in forwards;
+    -webkit-animation: card-right-in steps(100,start) 1s forwards;
+    -moz-animation: card-right-in 1s ease-in forwards;
+    -o-animation: card-right-in 1s ease-in forwards;
 }
-.image-container .effect-cardX-right-out{
+.image-container .card-right-out{
     position: absolute;
     display: list-item;
-    animation: cardX-right-out 1s ease-in forwards;
-    -webkit-animation: cardX-right-out steps(100,start) 1s forwards;
-    -moz-animation: cardX-out 1s ease-in forwards;
-    -o-animation:  cardX-right-out 1s ease-in forwards;
+    animation: card-right-out 1s ease-in forwards;
+    -webkit-animation: card-right-out steps(100,start) 1s forwards;
+    -moz-animation: card-out 1s ease-in forwards;
+    -o-animation:  card-right-out 1s ease-in forwards;
 }
 
-@keyframes cardX-right-in{
+@keyframes card-right-in{
     from{
         left: 100%;
         width: 80px;
@@ -175,7 +170,7 @@ img{
     }
 }
 
-@keyframes cardX-right-out{
+@keyframes card-right-out{
     from{
         right: 0%;
         opacity: 1;
@@ -183,10 +178,9 @@ img{
     to{
         right:100%;
         opacity: 0.5;
-        z-index: -1;
     }
 }
 
-.image-container .effect-fade{
+.image-container .fade{
     display: none;
 }
