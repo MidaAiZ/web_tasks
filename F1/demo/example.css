@@ -48,13 +48,15 @@
     cursor: pointer;
 }
 .container{
-    width: 100%;
+    width: 1100px;
     height:auto;
     text-align: center;
     clear: both;
+    margin: auto;
+    font-family: 幼圆;
 }
 .lunbo-header{
-    width: 1100px;
+    width: 90%;
     height: 350px;
     margin: 50px auto;
 }
@@ -90,9 +92,8 @@ a{
 }
 .separate{
     width: 90%;
-    height: 10px;
+    height: 2px;
     background-color: #adadad;
-    border-radius: 10px;
     margin: 20px auto;
 }
 .panel{
@@ -117,9 +118,19 @@ a{
     height: 100%;
     line-height: 50px;
     font-size: 30px;
-    margin-left: 20px;;
+    margin-left: 20px;
     float: left;
     clear: both;
+}
+.panel-lunbo{
+    width: 800px;
+    height: 30px;
+    margin: auto;
+    line-height: 30px;
+    color: #464243;
+    font-size: 25px;
+    color: white;
+    border-radius: 10px 10px 0px 0px;
 }
 .inner-header{
     width: 30%;
@@ -138,6 +149,65 @@ a{
     border: 1px solid #d9d9d9;
     margin: 10px 0;
 }
+.lunbo1{
+    width: 800px;
+    margin: auto;
+    background-color: #8da1f3;
+}
+.code-container{
+    /*background-color: #c6cbeb;*/
+    /*font-size: 18px;*/
+    /*width:80%;*/
+    /*margin: 20px auto;*/
+    /*border-radius: 10px;*/
+}
+.code-text{
+    background-color: rgba(200, 208, 208, 0.39);
+    font-size: 15px;
+    width:80%;
+    text-align: left;
+    margin: 20px;
+    border-radius: 10px;
+    border:none;
+    padding: 5px;
+    overflow: hidden;
+}
+.introduce{
+    background-color: #e9ecec;
+    height: auto;
+    width: 758px;
+    margin:auto;
+    padding: 20px;
+    border: 1px solid #c4c4c4;
+    color: white;
+    font-family: "幼圆";
+    font-size: 16px;
+
+}
+.code-1{
+    height:210px;
+}
+.code-2{
+    height:70px;
+}
+.code-3{
+    height:320px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .blue{
     background-color: #adc3f3;
 }
@@ -145,18 +215,17 @@ a{
     background-color: #f37a64;
 }
 .green{
-    background-color: #a5f3bf;
+    background-color: #87f3b7;
+}
+.pink{
+    background-color: #ffb498;
+}
+.black{
+    background-color: #575754;
 }
 
-.lunbo1{
-    width: 800px;
-    margin: 50px auto;
-    background-color: #8da1f3;
-}
-.html-code{
-    background-color: #c6cbeb;
-    font-size: 18px;
-    width:80%;
-    margin: 20px auto;
-    border-radius: 10px;
+@media screen and (max-device-width: 980px) {
+    .container{
+        width: 980px;
+    }
 }

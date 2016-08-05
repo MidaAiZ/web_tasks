@@ -61,34 +61,79 @@
                     <div class="panel-header inner-header red">
                         <span  class="panel-header-span inner-span">搭建html文件</span>
                     </div>
-                    <div class="html-code">
-                        <span>
-                            &lt;div class="lunbo-container" id="lunbo-contianer"&gt;
-                            &lt;div class="image-container"&gt;
-                            &lt;ul&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="../image/1.jpg"&gt;&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="../image/2.jpeg"&gt;&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="../image/3.jpg"&gt;&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="../image/4.jpg"&gt;&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="../image/5.jpg"&gt;&lt;/a&gt;&lt;/li&gt;
-                            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="../image/6.jpg"&gt;&lt;/a&gt;&lt;/li&gt;
-                            &lt;/ul&gt;
-                            &lt;/div&gt;
-                            &lt;/div&gt;
-                        </span>
+                    <div class="code-container">
+                       <textarea class="code-text code-1" disabled="true">
+                           <div class="lunbo-container" id="lunbo">
+                               <div class="image-container">
+                                   <ul>
+                                       <li><a href="#"><img src="1.jpg"></a></li>
+                                       <li><a href="#"><img src="2.jpg"></a></li>
+                                       <li><a href="#"><img src="3.jpg"></a></li>
+                                       <li><a href="#"><img src="4.jpg"></a></li>
+                                       <li><a href="#"><img src="5.jpg"></a></li>
+                                       <li><a href="#"><img src="6.jpg"></a></li>
+                                   </ul>
+                               </div>
+                           </div>
+                       </textarea>
+                        <div class="panel-header inner-header green"> <span  class="panel-header-span inner-span">引入插件+初始化插件</span></div>
+                       <textarea class="code-text code-2" disabled="true">
+                            //引入插件
+                            <script src="LunboPlugin.js"></script>
+                            //初始化插件
+                             var myLunbo1 = $("#lunbo").createLunbo();
+                       </textarea>
                     </div>
-                    <div class="lunbo"><div class="lunbo-container lunbo1" id="lunbo-contianer1">
-                        <div class="image-container">
-                            <ul class="img-ul">
-                                <li><a href="#"><img src="../image/1.jpg"></a></li>
-                                <li><a href="#"><img src="../image/2.jpeg"></a></li>
-                                <li><a href="#"><img src="../image/3.jpg"></a></li>
-                                <li><a href="#"><img src="../image/4.jpg"></a></li>
-                                <li><a href="#"><img src="../image/5.jpg"></a></li>
-                                <li><a href="#"><img src="../image/6.jpg"></a></li>
-                            </ul>
+                    <div class="lunbo">
+                        <div class="panel-lunbo black"><span>显示效果</span></div>
+                        <div class="lunbo-container lunbo1" id="lunbo-contianer1">
+                            <div class="image-container">
+                                <ul class="img-ul">
+                                    <li><a href="#"><img src="../image/1.jpg"></a></li>
+                                    <li><a href="#"><img src="../image/2.jpeg"></a></li>
+                                    <li><a href="#"><img src="../image/3.jpg"></a></li>
+                                    <li><a href="#"><img src="../image/4.jpg"></a></li>
+                                    <li><a href="#"><img src="../image/5.jpg"></a></li>
+                                    <li><a href="#"><img src="../image/6.jpg"></a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div></div>
+                        <div class="introduce black">
+                            <span>
+                                <p>我们只需要找到轮播图容器的节点，在引用插件JS文件后执行$("#lunbo").createLunbo()函数即可</p>
+                                <p>同时我们应该获取函数的返回值，即 var myLunbo1 = $("#lunbo").createLunbo(),以便后续操作</p>
+                                <p>现在我们已经完成了轮播插件的初始化，图片已经具有默认3秒的轮播功能</p>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="separate"></div>
+                    <div class="inner-header pink">
+                        <span class="inner-span">带有参数的插件初始化</span>
+                    </div>
+                    <div class="code-container">
+                         <textarea class="code-text code-3" disabled="true">
+              //html
+                   <div class="lunbo-container" id="lunbo2">
+                        <div class="image-container">
+                            ......
+                        </div>
+                   </div>
+              //javascript
+              var myLunbo2 = new $("#lunbo2").createLunbo(
+                             {
+                             setNumber : true,      //设置是否显示示数栏，默认显示
+                             setButton : true,      //设置是否显示按钮，默认显示
+                             setInterval : 3000,    //设置轮播时间间隔，默认两秒
+                             touchSwitch : true,    //设置是否启用触屏切图功能，默认开启
+                             dragSwitch : true,     //设置是否启用拖动图片切图，默认开启
+                             switchEffect : "card", //设置是图片切换特效，可选card/fade/none 默认fade
+                             autoShow : true,       //设置是否自动轮播，默认开启，传入false关闭
+                             hoverStop : true,      //设置鼠标悬浮在图片上时是否暂停轮播，默认开启
+                             numStyle : "circle"      //设置示数栏风格 提供rect/circle选项，默认rect
+                             });
+                       </textarea>
+                    </div>
+                    <div class="panel-lunbo black"><span>显示效果</span></div>
                     <div class="lunbo"><div class="lunbo-container lunbo1" id="lunbo-contianer2">
                         <div class="image-container">
                             <ul class="img-ul">
@@ -101,6 +146,12 @@
                             </ul>
                         </div>
                     </div></div>
+                    <div class="introduce black">
+                            <span>
+                                <p>我们可通过改变参数来改变样式，不需要改变的参数无需输入，插件将支持默认效果</p>
+                                <p>注意轮播图的切换效果和底部示数栏的风格，示数栏变成圆形，切换风格变成卡片式</p>
+                            </span>
+                    </div>
                     <div class="lunbo"><div class="lunbo-container lunbo1" id="lunbo-contianer3">
                         <div class="image-container">
                             <ul class="img-ul">
@@ -121,17 +172,10 @@
     <div class="footer"></div>
 
     <script>
-        var myLunbo1 = $("#lunbo-container").createLunbo();
-        var myLunbo1 = new $("#lunbo-contianer1").createLunbo(
-                {   setNumber : true,
-                    setButton : true,
-                    setInterval : 3000,
-                    numStyle : "circle",
-                    switchEffect : "card"
-                }
-        );
+        var myLunbo = $("#lunbo-container").createLunbo();
+        var myLunbo1 = new $("#lunbo-contianer1").createLunbo();
 
-        var myLunbo2 = new $("#lunbo-contianer2").createLunbo({switchEffect : "fade"});
+        var myLunbo2 = new $("#lunbo-contianer2").createLunbo({switchEffect : "card", numStyle : "circle" });
 
         var myLunbo3 = new $("#lunbo-contianer3").createLunbo(  {   setNumber : true,
             setButton : true,
