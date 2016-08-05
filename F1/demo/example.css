@@ -1,0 +1,162 @@
+*{
+    border: none;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+.header{
+    width: 100%;
+    height: 80px;
+    margin: 0px 0px  10px ;
+    overflow: hidden;
+}
+.navbar{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    border-radius: 5px;
+}
+.navbar-left{
+    float: left;
+}
+.navbar-right{
+    float: right;
+    display: inline-block;
+}
+.navbar-left span{
+    font-size: 30px;
+    line-height: 80px;
+    margin-left: 50px;
+    font-family: "幼圆";
+    color: white;
+}
+.navbar-right input[type=search]{
+    width: 200px;
+    height: 40px;
+    margin: 20px 0px;
+    border: 1px solid #ff0a01;
+    border-radius: 5px;
+}
+.navbar-right input[type=submit]{
+    width: 100px;
+    height: 40px;
+    margin: 20px 50px 20px 0px;
+    background-color: red;
+    border-radius: 5px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}
+.container{
+    width: 100%;
+    height:auto;
+    text-align: center;
+    clear: both;
+}
+.lunbo-header{
+    width: 1100px;
+    height: 350px;
+    margin: 50px auto;
+}
+.lunbo-container li{
+    width: 100%;
+    height:100%;
+}
+a{
+    text-decoration: none;
+}
+.image{
+    width: 100%;
+    height: 100%;
+}
+.img1{
+    background-color: #8da1f3;
+}
+.img2{
+    background-color: #f36c37;
+}
+.img3{
+    background-color: #82f3b8;
+}
+.img-head{
+    font-size: 80px;
+    color: white;
+    padding: 20px;;
+}
+.img-content{
+    font-size: 40px;
+    color: white;
+    margin: 50px;;
+}
+.separate{
+    width: 90%;
+    height: 10px;
+    background-color: #adadad;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+.panel{
+    width: 90%;
+    height:auto;
+    position: relative;
+    border: 2px solid #adadad;
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    clear: both;
+    overflow: hidden;
+}
+.panel-header{
+    border-radius: 5px;
+    background-color: #d9d9d9;
+    height: 50px;
+}
+.panel-header-span{
+    color: white;
+    height: 100%;
+    line-height: 50px;
+    font-size: 30px;
+    margin-left: 20px;;
+    float: left;
+    clear: both;
+}
+.inner-header{
+    width: 30%;
+    text-align: center;
+    height: 40px;
+    margin-left: 10px;
+    border-radius:0px;
+    box-shadow: 5px 5px 5px #b9b9b9;
+}
+.inner-span{
+    font-size: 20px;
+    line-height: 40px;
+}
+.panel-body{
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
+    margin: 10px 0;
+}
+.blue{
+    background-color: #adc3f3;
+}
+.red{
+    background-color: #f37a64;
+}
+.green{
+    background-color: #a5f3bf;
+}
+
+.lunbo1{
+    width: 800px;
+    margin: 50px auto;
+    background-color: #8da1f3;
+}
+.html-code{
+    background-color: #c6cbeb;
+    font-size: 18px;
+    width:80%;
+    margin: 20px auto;
+    border-radius: 10px;
+}

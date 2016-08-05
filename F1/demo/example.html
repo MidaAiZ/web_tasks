@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>example</title>
+    <script src="../framework/jquery.js"></script>
+    <script src="../src/LunboPlugin.js"></script>
+    <link href="../src/lunbo.css" rel="stylesheet" type="text/css">
+    <link href="example.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="header">
+        <div class="navbar">
+            <div class="navbar-left"><span>图片轮播插件文档</span></div>
+            <div class="navbar-right">
+                <form class="navbar-form">
+                    <input type="search" placeholder="Search">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="lunbo-header lunbo-container" id="lunbo-container">
+            <div class="image-container">
+                <li>
+                    <a href="#">
+                        <div class="image img1">
+                            <div class="img-head">This is img 1</div>
+                            <div class="img-content">This is img 1 content</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="image img2">
+                            <div class="img-head">This is img 2</div>
+                            <div class="img-content">This is img 2 content</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <div class="image img3">
+                            <div class="img-head">This is img 3</div>
+                            <div class="img-content">This is img 3 content</div>
+                        </div>
+                    </a>
+                </li>
+            </div>
+        </div>
+
+        <div class="separate"></div>
+
+        <div class="panel">
+            <div class="panel-header blue">
+                <span class="panel-header-span">插件使用说明</span>
+            </div>
+            <div class="panel-body">
+                <div class="panel-content">
+                    <div class="panel-header inner-header red">
+                        <span  class="panel-header-span inner-span">搭建html文件</span>
+                    </div>
+                    <div class="html-code">
+                        <span>
+                            &lt;div class="lunbo-container" id="lunbo-contianer"&gt;
+                            &lt;div class="image-container"&gt;
+                            &lt;ul&gt;
+                            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="../image/1.jpg"&gt;&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="../image/2.jpeg"&gt;&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="../image/3.jpg"&gt;&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="../image/4.jpg"&gt;&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="../image/5.jpg"&gt;&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="#"&gt;&lt;img src="../image/6.jpg"&gt;&lt;/a&gt;&lt;/li&gt;
+                            &lt;/ul&gt;
+                            &lt;/div&gt;
+                            &lt;/div&gt;
+                        </span>
+                    </div>
+                    <div class="lunbo"><div class="lunbo-container lunbo1" id="lunbo-contianer1">
+                        <div class="image-container">
+                            <ul class="img-ul">
+                                <li><a href="#"><img src="../image/1.jpg"></a></li>
+                                <li><a href="#"><img src="../image/2.jpeg"></a></li>
+                                <li><a href="#"><img src="../image/3.jpg"></a></li>
+                                <li><a href="#"><img src="../image/4.jpg"></a></li>
+                                <li><a href="#"><img src="../image/5.jpg"></a></li>
+                                <li><a href="#"><img src="../image/6.jpg"></a></li>
+                            </ul>
+                        </div>
+                    </div></div>
+                    <div class="lunbo"><div class="lunbo-container lunbo1" id="lunbo-contianer2">
+                        <div class="image-container">
+                            <ul class="img-ul">
+                                <li><a href="#"><img src="../image/1.jpg" ondragstart="return false" draggable="false"></a></li>
+                                <li><a href="#"><img src="../image/2.jpeg" ondragstart="false"></a></li>
+                                <li><a href="#"><img src="../image/3.jpg"></a></li>
+                                <li><a href="#"><img src="../image/4.jpg"></a></li>
+                                <li><a href="#"><img src="../image/5.jpg"></a></li>
+                                <li><a href="#"><img src="../image/6.jpg"></a></li>
+                            </ul>
+                        </div>
+                    </div></div>
+                    <div class="lunbo"><div class="lunbo-container lunbo1" id="lunbo-contianer3">
+                        <div class="image-container">
+                            <ul class="img-ul">
+                                <li><a href="#"><img src="../image/1.jpg" ondragstart="return false" draggable="false"></a></li>
+                                <li><a href="#"><img src="../image/2.jpeg" ondragstart="false"></a></li>
+                                <li><a href="#"><img src="../image/3.jpg"></a></li>
+                                <li><a href="#"><img src="../image/4.jpg"></a></li>
+                                <li><a href="#"><img src="../image/5.jpg"></a></li>
+                                <li><a href="#"><img src="../image/6.jpg"></a></li>
+                            </ul>
+                        </div>
+                    </div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer"></div>
+
+    <script>
+        var myLunbo1 = $("#lunbo-container").createLunbo();
+        var myLunbo1 = new $("#lunbo-contianer1").createLunbo(
+                {   setNumber : true,
+                    setButton : true,
+                    setInterval : 3000,
+                    numStyle : "circle",
+                    switchEffect : "card"
+                }
+        );
+
+        var myLunbo2 = new $("#lunbo-contianer2").createLunbo({switchEffect : "fade"});
+
+        var myLunbo3 = new $("#lunbo-contianer3").createLunbo(  {   setNumber : true,
+            setButton : true,
+            setInterval : 500,
+            numStyle : "circle",
+            switchEffect : "none"
+        });
+
+
+    </script>
+
+</body>
+</html>
