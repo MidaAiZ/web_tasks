@@ -2,16 +2,16 @@
     margin: 0px;
     padding: 0px;
     list-style: none;
-    /*user-select: none;*/
-    /*-ms-user-select: none;*/
-    /*-moz-user-select: none;*/
-    /*-webkit-user-select: none;*/
 }
 .lunbo-container{
     width: 600px;
     height: 400px;
     position: relative;
     margin: 100px auto;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 .lunbo-container>.image-container{
     width: 100%;
@@ -33,15 +33,11 @@
     background-color: inherit;
     display: none;
 }
-img{
-    width: 600px;
-    height: 400px;
-}
 .image-container .show{
     display: list-item;
 }
 
-.btn-container>.btn{
+.btn-container .btn{
     position: absolute;
     top: 50%;
     margin-top: -30px;
@@ -50,21 +46,20 @@ img{
     background-color: black;
     opacity: 0.6;
     border:none;
-    color: white;
-    font-size: 35px;
-    text-align: center;
-    line-height: 60px;
     display: none;
+    overflow: hidden;
 }
 .lunbo-container:hover .btn{
     display: inline-block;
     cursor: pointer;
 }
-.btn-left{
+.btn-container .btn-left{
     left: 0px;
+    background-image: url(btn_ico/btn_left.png);
 }
-.btn-right{
+.btn-container .btn-right{
     right: 0px;
+    background-image: url(btn_ico/btn_right.png);
 }
 .num-container{
     position: absolute;
@@ -156,20 +151,17 @@ img{
     -moz-animation: card-out 1s ease-in forwards;
     -o-animation:  card-right-out 1s ease-in forwards;
 }
-
 @keyframes card-right-in{
     from{
         left: 100%;
         width: 80px;
         opacity: 0.6;
     }
-
     to{
         opacity: 1;
         left: 0%;
     }
 }
-
 @keyframes card-right-out{
     from{
         right: 0%;
@@ -180,7 +172,6 @@ img{
         opacity: 0.5;
     }
 }
-
 .image-container .fade{
     display: none;
 }

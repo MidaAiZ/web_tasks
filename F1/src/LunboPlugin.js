@@ -200,7 +200,7 @@
                     $btnContainer = null
                 } else if (opt || opt === undefined) {
                     if ($btnContainer) {return this};  //防止重复设置按钮
-                    $btnContainer = $("<div class='btn-container'><button class='btn btn-left'><</button><button class='btn btn-right'>></button></div>");
+                    $btnContainer = $("<div class='btn-container'><button class='btn btn-left'></button><button class='btn btn-right'></button></div>");
                     $container.append($btnContainer);
                     $btnContainer.find(".btn-left").on("click",methods.prev).next().on("click",methods.next);
                 }
