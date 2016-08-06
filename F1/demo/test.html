@@ -196,8 +196,8 @@
 
         var myLunbo2 = new $("#lunbo-contianer2").createLunbo({switchEffect : "fade"});
         //测试链式功能
-        myLunbo2.lunbo("setDragSwitch",true).lunbo("setSlideSwitch",false).lunbo("next").lunbo("prev").lunbo("gotoImg",3).lunbo("gotoImg","传入字符无效")
-                .lunbo("setButton",false).lunbo("hoverStop",false).lunbo("setNumStyle","circle")
+        myLunbo2.lunbo("setDragSwitch",true).lunbo("setSwipeSwitch",false).lunbo("next").lunbo("prev").lunbo("gotoImg",3).lunbo("gotoImg","传入字符无效")
+                .lunbo("setButton",false).lunbo("setHoverStop",false).lunbo("setNumStyle","circle")
                 .lunbo("setInterval",2000).lunbo("setInterval","传入字符无效");
 //                alert(myLunbo2.lunbo("getCurrent"));
 
@@ -209,14 +209,14 @@
         });
 
         //函数功能测试
-        setTimeout(function(){ myLunbo3.lunbo("stopShow",true)},5000);          //停止自动播放  5秒后停止轮播  结果：正常
-        setTimeout(function(){ myLunbo3.lunbo("stopShow",false)},10000);        //开始自动播放  10秒后恢复轮播  结果：正常
-        setTimeout(function(){ myLunbo3.lunbo("hoverStop",false)},5000);        //取消鼠标滑过暂停播放的功能 5秒后停止该功能  结果：正常
-        setTimeout(function(){ myLunbo3.lunbo("hoverStop",true)},10000);        //恢复鼠标滑过暂停播放的功能  10秒后恢复该功能  结果：正常
+        setTimeout(function(){ myLunbo3.lunbo("setAutoShow",false)},5000);          //停止自动播放  5秒后停止轮播  结果：正常
+        setTimeout(function(){ myLunbo3.lunbo("setAutoShow",true)},10000);        //开始自动播放  10秒后恢复轮播  结果：正常
+        setTimeout(function(){ myLunbo3.lunbo("setHoverStop",false)},5000);        //取消鼠标滑过暂停播放的功能 5秒后停止该功能  结果：正常
+        setTimeout(function(){ myLunbo3.lunbo("setHoverStop",true)},10000);        //恢复鼠标滑过暂停播放的功能  10秒后恢复该功能  结果：正常
         setTimeout(function(){ myLunbo2.lunbo("setDragSwitch",false)},5000);    //取消拖拽切换图片  5秒后停止该功能  结果：正常
         setTimeout(function(){ myLunbo2.lunbo("setDragSwitch",true)},8000);     //恢复拖拽切换图片  8秒后恢复该功能  结果：正常
-        setTimeout(function(){ myLunbo2.lunbo("setSlideSwitch",false)},5000);   //取消触屏切换图片  5秒后停止该功能  结果：正常
-        setTimeout(function(){ myLunbo2.lunbo("setSlideSwitch",true)},8000);    //恢复触屏切换图片  8秒后恢复该功能  结果：正常
+        setTimeout(function(){ myLunbo2.lunbo("setSwipeSwitch",false)},5000);   //取消触屏切换图片  5秒后停止该功能  结果：正常
+        setTimeout(function(){ myLunbo2.lunbo("setSwipeSwitch",true)},8000);    //恢复触屏切换图片  8秒后恢复该功能  结果：正常
         setTimeout(function(){ myLunbo2.lunbo("setButton",false)},2000);        //不显示按钮  2秒后隐藏按钮  结果：正常
         setTimeout(function(){ myLunbo2.lunbo("setButton",true)},4000);         //显示按钮  4秒后恢复按钮  结果：正常
         setTimeout(function(){ myLunbo1.lunbo("setNumber",false)},3000);        //不显示示数栏  3秒后隐藏示数栏  结果：正常
