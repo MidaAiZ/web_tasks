@@ -61,6 +61,23 @@
                  这里的#container是轮播框架的一级父容器的id属性，初始化只需通过jQuery找到该父级容器并调用lunbo（）方法即可
                  插件会通过init()函数自动识别该父级容器，并获取内部包含的图片张数
 
+                 含有参数的插件初始化
+
+                  var myLunbo2 = new $("#lunbo2").createLunbo(
+                                         {
+                                           number : true,         //设置是否显示示数栏，默认显示
+                                           button : true,         //设置是否显示按钮，默认显示
+                                           interval : 3000,       //设置轮播时间间隔，默认三秒
+                                           swipeSwitch : true,    //设置是否启用触屏切图功能，默认开启
+                                           dragSwitch : true,     //设置是否启用拖动图片切图，默认开启
+                                           switchEffect : "card", //设置是图片切换特效，可选card/fade/none 默认fade
+                                           autoShow : true,       //设置是否自动轮播，默认开启
+                                           hoverStop : true,      //设置鼠标悬浮在图片上时是否暂停轮播，默认开启
+                                           numStyle : "circle"    //设置示数栏风格 提供rect/circle选项，默认rect
+                                           onSwitchStart : function(event,index) {}  //开始切换图片时的回调函数
+                                           onSwitchEnd : function(event,index) {}    //图片切换结束后的回调函数
+                                           });
+
         2.设置图片自动轮播
                 在初始化完成后就可以为图片设置开始轮播，由于插件支持链式操作，所以可以在刚才的代码上继续添加函数，如下
 
@@ -135,3 +152,8 @@
 
                 这行代码将使之前正在显示的图片切换到第四张图片
 
+        10.设置播放间隔
+
+                myLunbo.lunbo("setInterval",5000);
+
+                第二个参数是播放的时间间隔，以毫秒为单位，插件默认3秒
