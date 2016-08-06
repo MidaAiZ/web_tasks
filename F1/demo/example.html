@@ -64,25 +64,27 @@
                     </div>
                     <div class="code-container">
                        <textarea class="code-text code-1" disabled="true">
-                           <div class="lunbo-container" id="lunbo">     //父级主容器添加class="lunbo-container"属性
-                               <div class="image-container">            //图片容器添加class="image-container"属性
-                                   <ul>
-                                       <li><a href="#"><img src="1.jpg"></a></li>
-                                       <li><a href="#"><img src="2.jpg"></a></li>
-                                       <li><a href="#"><img src="3.jpg"></a></li>
-                                       <li><a href="#"><img src="4.jpg"></a></li>
-                                       <li><a href="#"><img src="5.jpg"></a></li>
-                                       <li><a href="#"><img src="6.jpg"></a></li>
-                                   </ul>
-                               </div>
-                           </div>
+            <div class="lunbo-container" id="lunbo">     //父级主容器添加class="lunbo-container"属性
+                <div class="image-container">            //图片容器添加class="image-container"属性
+                     <ul>
+                         <li><a href="#"><img src="1.jpg"></a></li>
+                         <li><a href="#"><img src="2.jpg"></a></li>
+                         <li><a href="#"><img src="3.jpg"></a></li>
+                         <li><a href="#"><img src="4.jpg"></a></li>
+                         <li><a href="#"><img src="5.jpg"></a></li>
+                         <li><a href="#"><img src="6.jpg"></a></li>
+                     </ul>
+                </div>
+            </div>
                        </textarea>
                         <div class="panel-header inner-header green"> <span  class="panel-header-span inner-span">引入插件+初始化插件</span></div>
                        <textarea class="code-text code-2" disabled="true">
-                            //引入插件
-                            <script src="LunboPlugin.js"></script>
-                            //初始化插件
-                             var myLunbo1 = $("#lunbo").createLunbo();
+            //引入及jQuery库插件js和样式
+                <script src="jquery.min.js"></script>        //本插件需要jQuery库的支持
+                <script src="LunboPlugin.js"></script>       //插件在jQuery库之后引入
+                <link href="lunbo.css" rel="stylesheet" type="text/css">
+            //初始化插件
+                var myLunbo1 = $("#lunbo").createLunbo();   //找到主容器并调用createLunbo()函数
                        </textarea>
                     </div>
                     <div class="lunbo">
@@ -133,15 +135,17 @@
         //javascript
          var myLunbo2 = new $("#lunbo2").createLunbo(
                         {
-                          setNumber : true,      //设置是否显示示数栏，默认显示
-                          setButton : true,      //设置是否显示按钮，默认显示
-                          setInterval : 3000,    //设置轮播时间间隔，默认两秒
+                          number : true,         //设置是否显示示数栏，默认显示
+                          button : true,         //设置是否显示按钮，默认显示
+                          interval : 3000,       //设置轮播时间间隔，默认三秒
                           swipeSwitch : true,    //设置是否启用触屏切图功能，默认开启
                           dragSwitch : true,     //设置是否启用拖动图片切图，默认开启
                           switchEffect : "card", //设置是图片切换特效，可选card/fade/none 默认fade
-                          autoShow : true,       //设置是否自动轮播，默认开启，传入false关闭
+                          autoShow : true,       //设置是否自动轮播，默认开启
                           hoverStop : true,      //设置鼠标悬浮在图片上时是否暂停轮播，默认开启
-                          numStyle : "circle"      //设置示数栏风格 提供rect/circle选项，默认rect
+                          numStyle : "circle"    //设置示数栏风格 提供rect/circle选项，默认rect
+                          onSwitchStart : function(event,index) {}  //开始切换图片时的回调函数
+                          onSwitchEnd : function(event,index) {}    //图片切换结束后的回调函数
                           });
                         </textarea>
                     </div>
@@ -170,25 +174,26 @@
                     </div>
                     <div class="code-container">
                         <textarea class="code-text code-4" disabled="true">
-            //html
-            <div class="lunbo-container" id="lunbo3">
-                <div class="image-container">
-                    ......
-                </div>
-             </div>
-            //javascript
-            var myLunbo3 = new $("#lunbo-contianer3").createLunbo();   //初始化默认功能
-            setTimeOut(
-                      function(){
-                                  myLunbo3.lunbo("setButton",false)   //不显示按钮
-                                  .lunbo("setNumber",false)           //不显示示数栏
-                                  .lunbo("setHoverStop",false)        //鼠标移入不禁止轮播
-                                  .lunbo("setInterval",1000)          //播放间隔设置为1秒
-                                  .lunbo("setDragSwitch",false)       //取消拖动图片切图的功能
-                                  .lunbo("setSwipeSwitch",false)      //取消触屏切图的功能
-                                  .lunbo("setAutoShow",true)          //开启自动轮播
-                      },3000);
-            //Tips:先观察下方轮播图的情况，再点击测试按钮观察3秒钟后的变化，后点击恢复按钮再观察变H化
+         //html
+                <div class="lunbo-container" id="lunbo3">
+                    <div class="image-container">
+                        ......
+                    </div>
+                 </div>
+         //javascript
+                var myLunbo3 = new $("#lunbo-contianer3").createLunbo();   //初始化默认功能
+                setTimeOut(
+                          function(){
+                                      myLunbo3.lunbo("button",false)   //不显示按钮
+                                      .lunbo("number",false)           //不显示示数栏
+                                      .lunbo("setHoverStop",false)     //鼠标移入不禁止轮播
+                                      .lunbo("interval",1000)          //播放间隔设置为1秒
+                                      .lunbo("setDragSwitch",false)    //取消拖动图片切图的功能
+                                      .lunbo("setSwipeSwitch",false)   //取消触屏切图的功能
+                                      .lunbo("resume")                 //恢复自动轮播
+                                      .lunbo(0)                        //跳转到第一张图片
+                          },3000);
+         Tips:先观察下方轮播图的情况,再点击测试按钮观察3秒钟后的变化,后点击恢复按钮再观察变化
                         </textarea>
                         <button class="test-btn blue" onclick="testFunc()">点我测试</button>
                         <button class="test-btn blue" onclick="reTestFunc()">点我恢复</button>
@@ -210,19 +215,19 @@
                             <span>
                                 <p>当然，插件还提供了其它处理函数，只需通过调用lunbo()方法传入函数名及形参即可</p>
                                 <p class="red higher">插件函数一览表</p>
+                                <p class="text-left">lunbo("prev")                  <span class="text-right">//播放上一张图片</span></p>
+                                <p class="text-left">lunbo("next")                  <span class="text-right">//播放下一张图片</span></p>
+                                <p class="text-left">lunbo("stop")                  <span class="text-right">//暂停图片轮播</span></p>
+                                <p class="text-left">lunbo("resume")                <span class="text-right">//恢复图片轮播</span></p>
+                                <p class="text-left">lunbo("current")               <span class="text-right">//获取当前正在播放的图片在同辈中的索引号，调用此方法后将不支持链式</span></p>
+                                <p class="text-left">lunbo(index)                   <span class="text-right">//播放指定图片 形参为目标图片在同辈中的索引号</span></p>
+                                <p class="text-left">lunbo("setInterval",3000)      <span class="text-right">//设置图片轮播时间间隔 默认3000ms</span></p>
                                 <p class="text-left">lunbo("setButton",bool)        <span class="text-right">//设置是否显示按钮 形参为bool值 默认为true</span></p>
                                 <p class="text-left">lunbo("setNumber",bool)        <span class="text-right">//设置是否显示示数栏 形参为bool值 默认为true</span></p>
+                                <p class="text-left">lunbo("setNumStyle","circle")  <span class="text-right">//设置示数栏风格 提供"rect"和"circle"参数，默认"rect"</span></p>
                                 <p class="text-left">lunbo("setSwipeSwitch",false)  <span class="text-right">//设置是否支持触碰切图 形参为bool值 默认为true</span></p>
                                 <p class="text-left">lunbo("setDragSwitch",false)   <span class="text-right">//设置是否支持鼠标拖拽切图 形参为bool值 默认为true</span></p>
                                 <p class="text-left">lunbo("setHoverStop",bool)     <span class="text-right">//设置是否在鼠标滑过时停止轮播，形参为bool值 默认为true</span></p>
-                                <p class="text-left">lunbo("setAutoShow",bool)      <span class="text-right">//设置是否自动轮播 形参为bool值 默认为true</span></p>
-                                <p class="text-left">lunbo("prev")                  <span class="text-right">//播放上一张图片 无形参</span></p>
-                                <p class="text-left">lunbo("next")                  <span class="text-right">//播放下一张图片 无形参</span></p>
-                                <p class="text-left">lunbo("setInterval",3000)      <span class="text-right">//设置图片轮播时间间隔 默认3000ms</span></p>
-                                <p class="text-left">lunbo("setNumStyle","circle")  <span class="text-right">//设置示数栏风格 提供"rect"和"circle"参数，默认"rect"</span></p>
-                                <p class="text-left">lunbo("gotoImg",index)         <span class="text-right">//播放指定图片 形参为目标图片在同辈中的索引号</span></p>
-                                <p class="text-left">lunbo("getCurrent")            <span class="text-right">//获取当前正在播放的图片在同辈中的索引号，调用此方法后将不支持链式</span></p>
-
                             </span>
                     </div>
             <div class="separate"></div>
@@ -231,19 +236,19 @@
             </div>
             <div class="code-container">
                   <textarea class="code-text code-5" disabled="disabled">
-                  //通过自定义CSS来改变轮播样式，需要将自定义CSS在插件CSS后引入
-                                            .lunbo-container{   //改变轮播图的大小
-                                                width: 400px;
-                                                height: 400px;
-                                            }
-                                            .image-container{  //改变插件的弧度，使之成圆形
-                                                border-radius: 50%;
-                                            }
+             //通过自定义CSS来改变轮播样式，需要将自定义CSS在插件CSS后引入
+                      .lunbo-container{     //改变轮播图的大小
+                                         width: 400px;
+                                         height: 400px;
+                                       }
+                      .image-container{     //改变插件的弧度，使之成圆形
+                                         border-radius: 50%;
+                                       }
 
-                                             .num-container{   //改变示数栏位置
-                                                bottom: -30px;
-                                            }
-                  //我们还可以改变很多，比如改变按钮样式 左右两边按钮的class分别是.btn-left和.btn-right
+                      .num-container{       //改变示数栏位置
+                                         bottom: -30px;
+                                     }
+             //我们还可以改变很多，比如改变按钮样式 左右两边按钮的class分别是.btn-left和.btn-right
                   </textarea>
             </div>
             <div class="lunbo-left">
@@ -287,15 +292,15 @@
         var myLunbo = $("#lunbo-container").createLunbo();
         var myLunbo1 = new $("#lunbo-contianer1").createLunbo();
 
-        var myLunbo2 = new $("#lunbo-contianer2").createLunbo({switchEffect : "card", numStyle : "circle" });
+        var myLunbo2 = new $("#lunbo-contianer2").createLunbo({switchEffect : "card", numStyle : "circle"});
 
         var myLunbo3 = new $("#lunbo-contianer3").createLunbo();
-        var myLunbo4 = new $("#lunbo-contianer4").createLunbo({"numStyle":"circle","setButton":false});
-        var myLunbo5 = new $("#lunbo-contianer5").createLunbo({"switchEffect":"card",setNumber : false});
+        var myLunbo4 = new $("#lunbo-contianer4").createLunbo({"numStyle":"circle","button":false});
+        var myLunbo5 = new $("#lunbo-contianer5").createLunbo({"switchEffect":"card",number : false});
         function testFunc() {
             setTimeout(
                    function() { myLunbo3.lunbo("setButton",false).lunbo("setNumber",false).lunbo("setHoverStop",false).lunbo("setInterval",1000)
-                            .lunbo("setDragSwitch",false).lunbo("setSwipeSwitch",false).lunbo("setAutoShow",true);
+                            .lunbo("setDragSwitch",false).lunbo("setSwipeSwitch",false).lunbo("resume").lunbo(0);
                    },3000
             )
         }

@@ -186,9 +186,9 @@
     <script>
         alert("这是插件功能的测试网页！\n建议缩小网页使三个轮播图在同一行以便观察效果");
         var myLunbo1 = new $("#lunbo-contianer1").createLunbo(
-                {   setNumber : true,
-                    setButton : true,
-                    setInterval : 3000,
+                {   number : true,
+                    button : true,
+                    interval : 3000,
                     numStyle : "circle",
                     switchEffect : "card"
                 }
@@ -203,14 +203,14 @@
 
         var myLunbo3 = new $("#lunbo-contianer3").createLunbo(  {   setNumber : true,
             setButton : true,
-            setInterval : 500,
+            interval : 500,
             numStyle : "circle",
             switchEffect : "none"
         });
 
         //函数功能测试
-        setTimeout(function(){ myLunbo3.lunbo("setAutoShow",false)},5000);          //停止自动播放  5秒后停止轮播  结果：正常
-        setTimeout(function(){ myLunbo3.lunbo("setAutoShow",true)},10000);        //开始自动播放  10秒后恢复轮播  结果：正常
+        setTimeout(function(){ myLunbo3.lunbo("stop")},5000);          //停止自动播放  5秒后停止轮播  结果：正常
+        setTimeout(function(){ myLunbo3.lunbo("resume",true)},10000);        //开始自动播放  10秒后恢复轮播  结果：正常
         setTimeout(function(){ myLunbo3.lunbo("setHoverStop",false)},5000);        //取消鼠标滑过暂停播放的功能 5秒后停止该功能  结果：正常
         setTimeout(function(){ myLunbo3.lunbo("setHoverStop",true)},10000);        //恢复鼠标滑过暂停播放的功能  10秒后恢复该功能  结果：正常
         setTimeout(function(){ myLunbo2.lunbo("setDragSwitch",false)},5000);    //取消拖拽切换图片  5秒后停止该功能  结果：正常

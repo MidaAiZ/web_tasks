@@ -159,10 +159,13 @@ a{
     height: 300px;
     border-radius: 50%;
 }
-.lunbo-special-1 img,
-.lunbo-special-2 img
+.lunbo-special-1 img
 {
     border-radius: 50%;
+}
+.lunbo-special-2 img
+{
+    border-radius: 100px;
 }
 .lunbo-special-2 .btn{
     background-color: #f30a00;
@@ -191,13 +194,13 @@ a{
 .code-text{
     background-color: rgba(200, 208, 208, 0.39);
     font-size: 15px;
-    width:80%;
+    min-width:80%;
     text-align: left;
     margin: 20px;
     border-radius: 10px;
     border:none;
     padding: 5px;
-    overflow: hidden;
+    overflow: scroll;
 }
 .introduce{
     background-color: #e9ecec;
@@ -223,17 +226,19 @@ a{
     background-color: #f37a64;
 }
 .code-1{
-    height:210px;
+    min-height:220px;
 }
 .code-2{
-    height:70px;
+    min-height:120px;
 }
-.code-3,
+.code-3{
+    min-height: 380px;
+}
 .code-4{
-    height:320px;
+    min-height:350px;
 }
 .code-5{
-    height:230px;
+    min-height:230px;
 }
 .text-left{
     text-align: left;
