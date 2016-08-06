@@ -35,7 +35,7 @@
                 //在使用插件前需要引入jQuery库以及插件js文件和插件css文件
                        <script src="jquery.min.js"></script>        //本插件需要jQuery库的支持
                        <script src="LunboPlugin.js"></script>       //插件在jQuery库之后引入
-                        <link href="lunbo.css" rel="stylesheet" type="text/css">
+                       <link href="lunbo.css" rel="stylesheet" type="text/css"> //引入插件CSS文件
 
                 //html文档
                        <div class="lunbo-container" id="container">     //父级主容器添加class="lunbo-container"属性
@@ -90,12 +90,24 @@
                  非常简单，只需要再刚才的基础上继续链式调用如下方法
 
                  var myLunbo=$("#container").createLunbo()
-                             .lunbo("setSwipeSwitch",true)  //好了，如果设备支持触屏，那么现在就已经具有了滑动屏幕切换图片的功能，左滑上一张，右滑下一张
+                             .lunbo("setSwipeSwitch",true) 或 .lunbo("setSwipeSwitch") //默认为true
 
-                 //实际上触屏切图功能是默认开启的，我们可以如下代码关闭
+                 好了，如果设备支持触屏，那么现在就已经具有了滑动屏幕切换图片的功能，左滑上一张，右滑下一张
+                 实际上触屏切图功能是默认开启的，我们可以如下代码关闭
 
                  myLunbo.lunbo("setSwipeSwitch",false)      //同理，拖拽切图也是一样的
 
+                设置拖拽切图
+
+                 //开启拖拽切图
+                 myLunbo.lunbo("setDragSwitch",true)或 myLunbo.lunbo("setDragSwitch",true)   //默认为true
+                 //关闭拖拽切图
+                 myLunbo.lunbo("setDragSwitch",false)
+
+                 值得注意的是,各浏览器对拖拽图片的处理不一,目前已知火狐以及360安全浏览器对拖拽切图不支持,会打开新网页或图片
+                 因此，并不建议开启拖拽切图的功能，初始化时传入false即可不启用此功能，如下
+
+                 var myLunbo = $("#container").createLunbo({"dragSwitch",false});
 
         4.暂停图片轮播
                 只需在lunbo()内传入"stop"参数即可，如下
@@ -106,31 +118,32 @@
         5.切换图片上一张/下一张
                 通过传入"prev"参数 或 "next"参数来设置播放当前正在显示图片的上一张或下一张
 
-                .lunbo("prev");  //显示上一张
+                myLunbo.lunbo("prev");  //显示上一张
                 myLunbo.lunbo("next");  //显示下一张
 
 
         6.显示示数栏和按钮
-                //初始化时不显示
+                按钮和示数栏默认开启，初始化时可以传入false不显示按钮和示数栏，如下
 
-                var myLunbo =   $("#container").createLunbo({"button":false,"number",false});
+                var myLunbo = $("#container").createLunbo({"button":false,"number",false});
 
-                //通过调用函数实现显示按钮和示数栏
+                同时还可以通过调用函数实现显隐按钮和示数栏
 
-                myLunbo.lunbo("setButton",true).lunbo("setNumber",true) //bool值可以不传入，因为插件默认值就是true
+                myLunbo.lunbo("setButton",true).lunbo("setNumber",true)   //显示，bool值可以不传入，因为插件默认值就是true
+                myLunbo.lunbo("setButton",false).lunbo("setNumber",false) //隐藏
 
         7.为示数栏设置自定义样式
                 插件内为示数栏内设置了默认的CSS样式，预设rect和circle两种类型，初始化时传入即可
 
-                var myLunbo =   $("#container").createLunbo({"numStyle","rect"});
+                var myLunbo =   $("#container").createLunbo({"numStyle","rect"}); //插件默认rect样式
 
-                或者通过函数改变
+                或者通过函数改变示数栏样式,如下
 
                 myLunbo.lunbo("setNumStyle","circle"});
 
-                自定义示数栏样式
+                自定义示数栏样式:
 
-                我们只需要在自己的CSS文件上写示数栏的样式即可，后把改CSS样式的名字传入即可
+                我们只需要在自己的CSS文件上写示数栏的样式即可，然后把改CSS样式的名字传入即可
                 例如写了一个CSS样式如下：
                     .myCSS{
                              width: 20px;
@@ -150,7 +163,7 @@
 
                 $("#container").lunbo(3)
 
-                这行代码将使之前正在显示的图片切换到第四张图片
+                这行代码将使当前显示的图片切换到第四张图片
 
         10.设置播放间隔
 

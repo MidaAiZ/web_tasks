@@ -22,11 +22,21 @@
         </div>
     </div>
     <div class="container">
-        <div class="lunbo-header lunbo-container" id="lunbo-container">
+        <div class="header-back lunbo-container" id="header-back">
+            <div class="image-container">
+                <ul class="img-ul">
+                    <li><a href="#"><img src="../image/1.jpg"></a></li>
+                    <li><a href="#"><img src="../image/3.jpg"></a></li>
+                    <li><a href="#"><img src="../image/4.jpg"></a></li>
+                    <li><a href="#"><img src="../image/2.jpg"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="lunbo-header lunbo-container" id="lunbo-header">
             <div class="image-container">
                 <li>
                     <a href="#">
-                        <div class="image img1">
+                        <div class="image img1 blue">
                             <div class="img-head">This is img 1</div>
                             <div class="img-content">This is img 1 content</div>
                         </div>
@@ -34,7 +44,7 @@
                 </li>
                 <li>
                     <a href="#">
-                        <div class="image img2">
+                        <div class="image img2 red">
                             <div class="img-head">This is img 2</div>
                             <div class="img-content">This is img 2 content</div>
                         </div>
@@ -42,7 +52,7 @@
                 </li>
                 <li>
                     <a href="#">
-                        <div class="image img3">
+                        <div class="image img3 green">
                             <div class="img-head">This is img 3</div>
                             <div class="img-content">This is img 3 content</div>
                         </div>
@@ -82,7 +92,7 @@
             //引入及jQuery库插件js和样式
                 <script src="jquery.min.js"></script>        //本插件需要jQuery库的支持
                 <script src="LunboPlugin.js"></script>       //插件在jQuery库之后引入
-                <link href="lunbo.css" rel="stylesheet" type="text/css">
+                <link href="lunbo.css" rel="stylesheet" type="text/css">    //引入插件CSS文件
             //初始化插件
                 var myLunbo1 = $("#lunbo").createLunbo();   //找到主容器并调用createLunbo()函数
                        </textarea>
@@ -92,12 +102,10 @@
                         <div class="lunbo-container lunbo-normal" id="lunbo-contianer1">
                             <div class="image-container">
                                 <ul class="img-ul">
-                                    <li><a href="#"><img src="../image/1.jpg"></a></li>
-                                    <li><a href="#"><img src="../image/2.jpeg"></a></li>
-                                    <li><a href="#"><img src="../image/3.jpg"></a></li>
-                                    <li><a href="#"><img src="../image/4.jpg"></a></li>
+                                    <li><a href="#"><img src="../image/16.jpg"></a></li>
                                     <li><a href="#"><img src="../image/5.jpg"></a></li>
-                                    <li><a href="#"><img src="../image/6.jpg"></a></li>
+                                    <li><a href="#"><img src="../image/17.jpg"></a></li>
+                                    <li><a href="#"><img src="../image/15.jpg"></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -110,17 +118,6 @@
                         </div>
                     </div>
                     <div class="separate"></div>
-                        <div class="image-container">
-                            <ul class="img-ul">
-                                <li><a href="#"><img src="../image/1.jpg"></a></li>
-                                <li><a href="#"><img src="../image/2.jpeg"></a></li>
-                                <li><a href="#"><img src="../image/3.jpg"></a></li>
-                                <li><a href="#"><img src="../image/4.jpg"></a></li>
-                                <li><a href="#"><img src="../image/5.jpg"></a></li>
-                                <li><a href="#"><img src="../image/6.jpg"></a></li>
-                            </ul>
-                        </div>
-                    </div>
                     <div class="inner-header orange">
                         <span class="inner-span">带有参数的插件初始化</span>
                     </div>
@@ -153,12 +150,12 @@
                     <div class="lunbo"><div class="lunbo-container lunbo-normal" id="lunbo-contianer2">
                         <div class="image-container">
                             <ul class="img-ul">
-                                <li><a href="#"><img src="../image/1.jpg"></a></li>
-                                <li><a href="#"><img src="../image/2.jpeg"></a></li>
-                                <li><a href="#"><img src="../image/3.jpg"></a></li>
-                                <li><a href="#"><img src="../image/4.jpg"></a></li>
-                                <li><a href="#"><img src="../image/5.jpg"></a></li>
-                                <li><a href="#"><img src="../image/6.jpg"></a></li>
+                                        <li><a href="#"><img src="../image/11.jpg"></a></li>
+                                        <li><a href="#"><img src="../image/10.jpg"></a></li>
+                                        <li><a href="#"><img src="../image/13.jpg"></a></li>
+                                        <li><a href="#"><img src="../image/14.jpg"></a></li>
+                                        <li><a href="#"><img src="../image/9.jpg"></a></li>
+                                        <li><a href="#"><img src="../image/8.jpg"></a></li>
                             </ul>
                         </div>
                     </div></div>
@@ -170,7 +167,7 @@
                     </div>
                     <div class="separate"></div>
                     <div class="panel-header inner-header black">
-                        <span  class="panel-header-span inner-span">通过插件函数改变轮播效果</span>
+                        <span  class="panel-header-span inner-span">通过函数改变轮播效果</span>
                     </div>
                     <div class="code-container">
                         <textarea class="code-text code-4" disabled="true">
@@ -202,12 +199,11 @@
                     <div class="lunbo"><div class="lunbo-container lunbo-normal" id="lunbo-contianer3">
                         <div class="image-container">
                             <ul class="img-ul">
-                                <li><a href="#"><img src="../image/1.jpg"></a></li>
-                                <li><a href="#"><img src="../image/2.jpeg"></a></li>
-                                <li><a href="#"><img src="../image/3.jpg"></a></li>
-                                <li><a href="#"><img src="../image/4.jpg"></a></li>
-                                <li><a href="#"><img src="../image/5.jpg"></a></li>
                                 <li><a href="#"><img src="../image/6.jpg"></a></li>
+                                <li><a href="#"><img src="../image/12.jpg"></a></li>
+                                <li><a href="#"><img src="../image/7.jpg"></a></li>
+                                <li><a href="#"><img src="../image/13.jpg"></a></li>
+                                <li><a href="#"><img src="../image/9.jpg"></a></li>
                             </ul>
                         </div>
                     </div></div>
@@ -255,12 +251,9 @@
                 <div class="lunbo"><div class="lunbo-container lunbo-special-1" id="lunbo-contianer4">
                     <div class="image-container">
                         <ul class="img-ul">
-                            <li><a href="#"><img src="../image/1.jpg"></a></li>
-                            <li><a href="#"><img src="../image/2.jpeg"></a></li>
-                            <li><a href="#"><img src="../image/3.jpg"></a></li>
-                            <li><a href="#"><img src="../image/4.jpg"></a></li>
-                            <li><a href="#"><img src="../image/5.jpg"></a></li>
-                            <li><a href="#"><img src="../image/6.jpg"></a></li>
+                            <li><a href="#"><img src="../image/18.jpg"></a></li>
+                            <li><a href="#"><img src="../image/19.jpg"></a></li>
+                            <li><a href="#"><img src="../image/20.jpg"></a></li>
                         </ul>
                     </div>
                 </div></div>
@@ -269,12 +262,9 @@
                 <div class="lunbo"><div class="lunbo-container lunbo-special-2" id="lunbo-contianer5">
                     <div class="image-container">
                         <ul class="img-ul">
-                            <li><a href="#"><img src="../image/1.jpg"></a></li>
-                            <li><a href="#"><img src="../image/2.jpeg"></a></li>
-                            <li><a href="#"><img src="../image/3.jpg"></a></li>
-                            <li><a href="#"><img src="../image/4.jpg"></a></li>
-                            <li><a href="#"><img src="../image/5.jpg"></a></li>
-                            <li><a href="#"><img src="../image/6.jpg"></a></li>
+                            <li><a href="#"><img src="../image/20.jpg"></a></li>
+                            <li><a href="#"><img src="../image/19.jpg"></a></li>
+                            <li><a href="#"><img src="../image/18.jpg"></a></li>
                         </ul>
                     </div>
                 </div></div>
@@ -289,22 +279,22 @@
     <div class="footer"></div>
 
     <script>
-        var myLunbo = $("#lunbo-container").createLunbo();
-        var myLunbo1 = new $("#lunbo-contianer1").createLunbo();
-
-        var myLunbo2 = new $("#lunbo-contianer2").createLunbo({switchEffect : "card", numStyle : "circle"});
-
-        var myLunbo3 = new $("#lunbo-contianer3").createLunbo();
-        var myLunbo4 = new $("#lunbo-contianer4").createLunbo({"numStyle":"circle","button":false});
-        var myLunbo5 = new $("#lunbo-contianer5").createLunbo({"switchEffect":"card",number : false});
-        function testFunc() {
+        var myLunboBack = $("#header-back").createLunbo({   //顶部背景图
+                           interval : 8000,button : false,number : false,dragSwitch : false,swipeSwitch : false,hoverStop : false});
+        var myLunboHeader = $("#lunbo-header").createLunbo();       //头部文字轮播图
+        var myLunbo1 = new $("#lunbo-contianer1").createLunbo();    //第一个示例轮播图
+        var myLunbo2 = new $("#lunbo-contianer2").createLunbo({switchEffect : "card", numStyle : "circle"});    //第二个示例轮播图
+        var myLunbo3 = new $("#lunbo-contianer3").createLunbo();    //第三个示例轮播图
+        var myLunbo4 = new $("#lunbo-contianer4").createLunbo({"numStyle":"circle","button":false});    //底部左边的圆形示例轮播图
+        var myLunbo5 = new $("#lunbo-contianer5").createLunbo({"switchEffect":"card",number : false});  //底部右边的正方弧角示例轮播图
+        function testFunc() {       //第三个轮播图下点击测试按钮三秒钟后执行以下函数
             setTimeout(
                    function() { myLunbo3.lunbo("setButton",false).lunbo("setNumber",false).lunbo("setHoverStop",false).lunbo("setInterval",1000)
                             .lunbo("setDragSwitch",false).lunbo("setSwipeSwitch",false).lunbo("resume").lunbo(0);
                    },3000
             )
         }
-        function reTestFunc() {
+        function reTestFunc() {     //第三个轮播图下的恢复按钮点击后执行以下函数
                    myLunbo3.lunbo("setButton",true).lunbo("setNumber",true).lunbo("setHoverStop",true).lunbo("setInterval",3000)
                             .lunbo("setDragSwitch",true).lunbo("setSwipeSwitch",true);
 
