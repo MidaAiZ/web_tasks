@@ -107,13 +107,12 @@
                     last = current;               //记录当前正在播放的图片索引号，并将其赋给last
                     current++;
                     if (current > (imgSize-1)){current = 0;}    //若当前已经播放到最后一张图片则回到第一张图片
-                    privateMethods.show();
                 }else if (stopX-startX > 20) {    //右滑距离>5切换到下一张
                     last = current;
                     current--;
                     if (current <= -1){current = imgSize-1;}    //当向左滑动时若已经滑到第一张图片则显示最后一张图片
-                    privateMethods.show();
                 }
+                privateMethods.show();
             },
         }
 
@@ -292,12 +291,7 @@
 
     $.fn.createLunbo = function() {     //初始化插件的外层函数，返回一个新的inner内层函数，实现多例化
         var newLunbo = new inner(this)
-        if(typeof arguments[0] === "object"){   //初始化时传入object
-            newLunbo.lunbo(arguments[0]);
-            return newLunbo;
-        } else {       //初始化时未传入参数
-            newLunbo.lunbo();
-            return newLunbo;
-        }
+        newLunbo.lunbo(arguments[0]);
+        return newLunbo;
     }
 })(jQuery);
