@@ -2,6 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <title>index</title>
     <script src="index.js"></script>
     <link href="index.css" rel="stylesheet" type="text/css">
@@ -9,33 +10,37 @@
 <body>
     <div class="container">
         <div class="content">
-            <div class="form">
+            <div class="form-panel">
                 <div class="form-header">
                     <b class="header-text">Sign in</b>
                 </div>
                 <div class="form-body">
-                    <form>
+                    <form id="form">
                         <div class="input">
                             <div class="panel" id="id-panel" onclick="onFocus(event)">
                                 <label for="email-id" class="form-label" id="label-id">Email ID</label>
-                                <input type="text" id="email-id" class="input-text" onfocus="onFocus(event)"  onblur="onBlur(event)" oninput="onChange(event)">
+                                <input type="text" id="email-id" class="input-text" maxlength="20" data="onlyNumber" onfocus="onFocus(event)" onblur="onBlur(event)">
                             </div>
                         </div>
                         </br>
                         <div class="input">
                             <div class="panel" id="pwd-panel" onclick="onFocus(event)">
                                 <label for="email-pwd" class="form-label" id="label-pwd">Password</label>
-                                <input type="password" id="email-pwd"  class="input-text" onfocus="onFocus(event)" onblur="onBlur(event)" oninput="onChange(event)">
+                                <input type="password" id="email-pwd"  class="input-text" maxlength="20"  data="Num_Lower_Upper" onfocus="onFocus(event)" onblur="onBlur(event)" onkeydown="enter(event)">
                             </div>
                         </div>
                         </br>
                         <div class="input-tip">
                             <div class="tip"><a href="#">Forgot Password?</a></div>
+                            <div class="submit-wrong" id="submit-wrong">Login Fail!</div>
                         </div>
                     </form>
                 </div>
                 <div class="form-footer">
-                    <input type="submit" onsubmit="" value="Login">
+                    <input type="submit" id="submit" onsubmit="checkForm(event)" value="Login">
+                </div>
+                <div class="submit-success" id="submit-success">
+                    <div class="check-mark" id="check-mark">✔</div>
                 </div>
             </div>
         </div>
