@@ -116,15 +116,12 @@ body{
     animation: open-id 0.3s steps(20,start) forwards;
 }
 @keyframes open-id{
-    0%{
+    from{
         height: 2px;
     }
-    50%{
-        height: 20px;
-    }
-    100%{
+    to{
         height: 40px;
-        background: white url(ico/id_ico.png) no-repeat left center;
+          background: white url(ico/id_ico.png) no-repeat left center;
     }
 }
 .open-pwd{       /*pwd输入框获取焦点时动画 高度增加+显示图标*/
@@ -134,13 +131,10 @@ body{
     -o-animation: open-pwd 0.3s steps(20,start) forwards;
 }
 @keyframes open-pwd{
-    0%{
+    from{
         height: 2px;
     }
-    50%{
-        height: 20px;
-    }
-    100%{
+    to{
         height: 40px;
         background:white url(ico/pwd_ico.png) no-repeat left center;
     }
@@ -205,29 +199,38 @@ body{
 }
 
 .submit-wrong{     /*表单验证失败*/
+    position: relative;
+    bottom: 20px;
     width: 100%;
-    height: 20px;
-    background-color: #d9d9d9;
-    color: red;
+    height: 50px;
+    background-color: #d93517;
+    color: white;
     text-align: center;
     display: none;
 }
 .submit-wrong.wrong{       /*表单验证失败动画*/
     display: block;
-    -webkit-animation: wrong 3s steps(20,start) forwards;
-    -mos-animation: wrong 3s steps(20,start) forwards;
-    -o-animation: wrong 3s steps(20,start) forwards;
-    animation: wrong 3s steps(20,start) forwards;
+    -webkit-animation: wrong 6s steps(20,start) forwards;
+    -mos-animation: wrong 6s steps(20,start) forwards;
+    -o-animation: wrong 6s steps(20,start) forwards;
+    animation: wrong 6s steps(20,start) forwards;
 }
 @keyframes wrong {
     0%{
         opacity: 0.2;
+        bottom: 0px;
     }
-    50%{
-        opacity: 1;
+    30%{
+        opacity: 0.8;
+        bottom: 50px;
+    }
+    70%{
+        opacity: 0.9;
+        bottom: 50px;
     }
     100%{
         opacity: 0;
+        bottom: 0px;
     }
 }
 .submit-success{        /*表单验证成功*/
