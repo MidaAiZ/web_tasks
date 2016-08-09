@@ -8,35 +8,51 @@ function onFocus(event) {       //点击输入框周边或者输入框获取焦�
         case document.getElementById("email-id") :
         {
             //添加动画class属性
-            addClass(document.getElementById("label-id"),"change-label");
-            addClass(document.getElementById("email-id"),"change-input");
-            document.getElementById("email-id").focus();
+            var LabelId = document.getElementById("label-id");
+            var emailId = document.getElementById("email-id");
+            removeClass(emailId, "close-input");
+            removeClass(LabelId, "close-label");
+            addClass(LabelId,"open-label");
+            addClass(emailId,"open-id");
+            emailId.focus();
         };break;
 
         case document.getElementById("pwd-panel") :     //密码输入框
         case document.getElementById("email-pwd") :
         {
-            addClass(document.getElementById("label-pwd"),"change-label");
-            addClass(document.getElementById("email-pwd"),"change-input");
-            document.getElementById("email-pwd").focus();
+            var LabelPwd = document.getElementById("label-pwd");
+            var emailPwd = document.getElementById("email-pwd");
+            removeClass(emailPwd, "close-input");
+            removeClass(LabelPwd, "close-label");
+            addClass(LabelPwd,"open-label");
+            addClass(emailPwd,"open-pwd");
+            emailPwd.focus();
         };break;
     }
 }
-function onBlur(event) {    //输入框失去焦点  这时如果输入框内有文字输入框不会变小 如果没文字输入框会变小
+function onBlur(event) {    //输入框失去焦点  这时如果输入框内有文字输入框不会变小 如果没文字输入框会重新变小
     switch(event.target){
         case document.getElementById("email-id") :
         {
             if(event.target.value.length === 0) {
-                removeClass(document.getElementById("label-id"), "change-label");
-                removeClass(document.getElementById("email-id"), "change-input");
+                var LabelId = document.getElementById("label-id");
+                var emailId = document.getElementById("email-id");
+                removeClass(LabelId, "open-label");
+                removeClass(emailId, "open-id");
+                addClass(emailId, "close-input");
+                addClass(LabelId, "close-label");
             }
         };break;
 
         case document.getElementById("email-pwd") :
         {
             if(event.target.value.length === 0) {
-                removeClass(document.getElementById("label-pwd"), "change-label");
-                removeClass(document.getElementById("email-pwd"), "change-input");
+                var LabelPwd = document.getElementById("label-pwd");
+                var emailPwd = document.getElementById("email-pwd");
+                removeClass(LabelPwd, "open-label");
+                removeClass(emailPwd, "open-pwd");
+                addClass(emailPwd, "close-input");
+                addClass(LabelPwd, "close-label");
             }
         };break;
     }
@@ -56,7 +72,7 @@ function addClass(ele,newClass){
 }
 //移除class属性
 function removeClass(ele,oldClass){
-    if (ele.className.indexOf(" "+oldClass) !== -1) {
+    if (ele.className.indexOf(" "+oldClass) !== -1) {   //如果存在再移除
         ele.className =  ele.className.replace(" "+oldClass,"");
     }
 }
@@ -71,11 +87,11 @@ function checkForm() {
         var checkMark = document.getElementById("check-mark");
         addClass(success,"success");
         addClass(checkMark,"success");
-        // document.getElementById("form").submit(); //提交表单
+         //document.getElementById("form").submit(); //提交表单
     } else {
         var wrong = document.getElementById("submit-wrong");
-        addClass(wrong,"wrong")
-        setTimeout(function(){removeClass(wrong,"wrong")},3000);
+        removeClass(wrong,"wrong");     //先移除再添加 以保证多次迅速提交验证失败时的动画效果
+        setTimeout( function() {addClass(wrong,"wrong")},10)     //这里得过一会再添加 或则不会有动画效果, 测试所得结论
     }
 }
 function check(checkModal,str){     //表单验证 提供四种验证规则，只需要在input后面写上data属性即可

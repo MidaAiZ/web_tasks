@@ -44,7 +44,7 @@ body{
 .form-body label{
     position: absolute;
     bottom: 8px;
-    left: 5px;
+    left: -11px;
     font-size: x-small;
     opacity: 0.8;
     color: white;
@@ -52,10 +52,14 @@ body{
     text-align: left;
     cursor: pointer;
 }
-.change-label{
-    animation: scale-label 0.5s steps(100,start) forwards;
+
+.open-label{        /*输入框获取焦点时label标签动画*/
+    -webkit-animation: open-label 0.5s steps(20,start) forwards;
+    -moz-animation: open-label 0.5s steps(20,start) forwards;
+    -o-animation: open-label 0.5s steps(20,start) forwards;
+    animation: open-label 0.5s steps(20,start) forwards;
 }
-@keyframes scale-label{
+@keyframes open-label{
     0%{
         bottom: 8px;
     }
@@ -69,14 +73,35 @@ body{
         bottom: 46px;
     }
 }
+.close-label{       /*输入框失去焦点时label标签动画*/
+    -webkit-animation: close-label 0.3s steps(20,start) forwards;
+    -moz-animation: close-label 0.3s steps(20,start) forwards;
+    -o-animation: close-label 0.3s steps(20,start) forwards;
+    animation: close-label 0.3s steps(20,start) forwards;
+}
+@keyframes close-label{
+    from{
+        bottom: 48px;
+    }
+    to{
+        font-size: x-small;
+        font-weight: 200;
+        bottom: 8px;
+    }
+}
 .form-body .input{
-    width: 100%;
+    width: 90%;
     height: 60px;
+    margin: auto;
     position: relative;
 }
-.form-body .input-text{
+.form-body #email-id,
+.form-body #email-pwd
+{
     width: 100%;
     height: 2px;
+    padding-left: 32px;
+    margin-left: -16px;
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -84,21 +109,57 @@ body{
     border-radius: 3px;
     box-shadow: 2px 2px 10px #484848;
 }
-.change-input{
-    animation: scale-input 0.3s steps(100,start) forwards;
-    -webkit-animation: scale-input 0.3s steps(100,start) forwards;
-    -moz-animation: scale-input 0.3s steps(100,start) forwards;
-    -o-animation: scale-input 0.3s steps(100,start) forwards;
+.open-id{       /*id输入框获取焦点时动画 高度增加+显示图标*/
+    -webkit-animation: open-id 0.3s steps(20,start) forwards;
+    -moz-animation: open-id 0.3s steps(20,start) forwards;
+    -o-animation: open-id 0.3s steps(20,start) forwards;
+    animation: open-id 0.3s steps(20,start) forwards;
 }
-@keyframes scale-input{
-    from{
+@keyframes open-id{
+    0%{
         height: 2px;
     }
-    to{
+    50%{
+        height: 20px;
+    }
+    100%{
         height: 40px;
+        background: white url(ico/id_ico.png) no-repeat left center;
     }
 }
-.form-body .tip{
+.open-pwd{       /*pwd输入框获取焦点时动画 高度增加+显示图标*/
+    animation: open-pwd 0.3s steps(20,start) forwards;
+    -webkit-animation: open-pwd 0.3s steps(20,start) forwards;
+    -moz-animation: open-pwd 0.3s steps(20,start) forwards;
+    -o-animation: open-pwd 0.3s steps(20,start) forwards;
+}
+@keyframes open-pwd{
+    0%{
+        height: 2px;
+    }
+    50%{
+        height: 20px;
+    }
+    100%{
+        height: 40px;
+        background:white url(ico/pwd_ico.png) no-repeat left center;
+    }
+}
+.close-input{         /*输入框失去焦点时动画*/
+    animation: close-input 0.3s steps(20,start) forwards;
+    -webkit-animation: close-input 0.3s steps(20,start) forwards;
+    -moz-animation: close-input 0.3s steps(20,start) forwards;
+    -o-animation: close-input 0.3s steps(20,start) forwards;
+}
+@keyframes close-input{
+    from{
+        height: 40px;
+    }
+    to{
+        height: 2px;
+    }
+}
+.form-body .tip{        /*忘记密码的提示文字*/
     margin-top: -5px;
     text-align: right;
     font-size: xx-small;
@@ -142,7 +203,8 @@ body{
     opacity: 0.6;
     color: #828690;
 }
-.submit-wrong{
+
+.submit-wrong{     /*表单验证失败*/
     width: 100%;
     height: 20px;
     background-color: #d9d9d9;
@@ -150,7 +212,7 @@ body{
     text-align: center;
     display: none;
 }
-.submit-wrong.wrong{
+.submit-wrong.wrong{       /*表单验证失败动画*/
     display: block;
     -webkit-animation: wrong 3s steps(20,start) forwards;
     -mos-animation: wrong 3s steps(20,start) forwards;
@@ -168,7 +230,7 @@ body{
         opacity: 0;
     }
 }
-.submit-success{
+.submit-success{        /*表单验证成功*/
     position: relative;
     width: 398px;
     height: 298px;
@@ -177,7 +239,7 @@ body{
     z-index: 2;
     display: none;
 }
-.submit-success .check-mark{
+.submit-success .check-mark{        /*验证成功时显示的对勾*/
     width: 60px;
     height: 60px;
     font-size: 60px;
@@ -185,7 +247,7 @@ body{
     margin: 120px auto;
     display: none;
 }
-.submit-success.success{
+.submit-success.success{        /*表单验证成功时动画*/
     display: block;
     -webkit-animation: success 0.4s steps(20,start) forwards;
     -mos-animation: success 0.4s steps(20,start) forwards;
@@ -200,7 +262,7 @@ body{
         bottom: 300px;
     }
 }
-.submit-success .check-mark.success{
+.submit-success .check-mark.success{        /*表单验证成功时对勾的动画*/
     display: block;
     -webkit-animation: success-mark 0.8s steps(20,start) forwards;
     -mos-animation: success-mark 0.8s steps(20,start) forwards;
@@ -219,7 +281,7 @@ body{
     }
 }
 
-
+/*响应式  媒体查询*/
 @media screen  and (min-width: 400px) and (max-width: 450px) {
     .content{
         width: 390px;
