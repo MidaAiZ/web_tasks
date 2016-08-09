@@ -45,6 +45,7 @@ function onBlur(event) {    //输入框失去焦点  这时如果输入框内有
 document.onload=function() {
     document.getElementById("label-id").addEventListener("touchstart",function(event) {onFocus(event)})
     document.getElementById("label-pwd").addEventListener("touchstart",function(event) {onFocus(event)})
+    document.getElementById("submit").addEventListener("touchend",function(event) {checkForm(event)})
 }
 
 //添加class属性

@@ -2,7 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="robots" content="all" />
     <title>index</title>
     <script src="index.js"></script>
     <link href="index.css" rel="stylesheet" type="text/css">
@@ -26,7 +26,7 @@
                         <div class="input">
                             <div class="panel" id="pwd-panel" onclick="onFocus(event)">
                                 <label for="email-pwd" class="form-label" id="label-pwd">Password</label>
-                                <input type="password" id="email-pwd"  class="input-text" maxlength="20"  data="Num_Lower_Upper" onfocus="onFocus(event)" onblur="onBlur(event)" onkeydown="enter(event)">
+                                <input type="password" id="email-pwd"  class="input-text" maxlength="20" data="Num_Lower_Upper" onfocus="onFocus(event)" onblur="onBlur(event)" onkeydown="enter(event)">
                             </div>
                         </div>
                         </br>
@@ -37,7 +37,7 @@
                     </form>
                 </div>
                 <div class="form-footer">
-                    <input type="submit" id="submit" onsubmit="checkForm(event)" value="Login">
+                    <input type="submit" id="submit" onclick="checkForm(event)" value="Login">
                 </div>
                 <div class="submit-success" id="submit-success">
                     <div class="check-mark" id="check-mark">✔</div>
