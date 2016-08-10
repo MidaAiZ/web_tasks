@@ -14,11 +14,14 @@ window.onload = function() {        //获取dom节点赋给全局变量form，�
         checkMark : document.getElementById("check-mark"),
         wrongPanel : document.getElementById("submit-wrong"),
         //表单验证
-        onlyNumber : /^\d{6,20}$/,                      //只允许数字
-        Num_Lower : /^[0-9a-z\_]{6,20}$/,               //允许数字 小写 下划线
-        Num_Upper : /^[0-9A-Z\_]{6,20}$/,               //允许数字 大写 下划线
-        Num_Lower_Upper : /^[0-9a-zA-Z\_]{6,20}$/       //允许数字 小写大写下划线
+        onlyNumber : /^\d{6,18}$/,                      //只允许数字
+        Num_Lower : /^[0-9a-z\_]{6,18}$/,               //允许数字 小写 下划线
+        Num_Upper : /^[0-9A-Z\_]{6,18}$/,               //允许数字 大写 下划线
+        Num_Lower_Upper : /^[0-9a-zA-Z\_]{6,18}$/       //允许数字 小写大写下划线
     }
+    //刷新页面的时候判断输入框内是否有内容 有则打开输入框
+    if (form.emailId.value.length > 0) { form.emailId.focus() };
+    if (form.emailPwd.value.length > 0) { form.emailPwd.focus() };
 }
 
 function onFocus(event) {       //点击输入框周边或者输入框获取焦点，变大
@@ -110,7 +113,8 @@ function checkForm() {
 }
 function check(checkModal,str){     //表单验证 提供四种验证规则，只需要在input后面写上data属性即可
 
-    if (str.length < 6) { return " is short than 6 character!" }
+    if (str.length < 6) { return " should more than 6 character!" }
+    if (str.length > 18) { return " should less than 6 character!" }
 
     switch (checkModal){
         case "onlyNumber" : { if (!form.onlyNumber.test(str)) { return " only allows number!"} }

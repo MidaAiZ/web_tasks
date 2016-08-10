@@ -95,6 +95,14 @@ body{
     margin: auto;
     position: relative;
 }
+.form-body .input-panel{
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+}
 .form-body #email-id,
 .form-body #email-pwd
 {
@@ -121,7 +129,10 @@ body{
     }
     to{
         height: 40px;
-          background: white url(ico/id_ico.png) no-repeat left center;
+        background: white url(ico/id_ico.png) no-repeat left center;
+        -moz-background-image: url(ico/id_ico.png);
+        -webkit-background-image: url(ico/id_ico.png);
+        -o-background-image: url(ico/id_ico.png);
     }
 }
 .open-pwd{       /*pwd输入框获取焦点时动画 高度增加+显示图标*/
@@ -137,6 +148,9 @@ body{
     to{
         height: 40px;
         background:white url(ico/pwd_ico.png) no-repeat left center;
+        -moz-background-image: url(ico/id_ico.png);
+        -webkit-background-image: url(ico/id_ico.png);
+        -o-background-image: url(ico/id_ico.png);
     }
 }
 .close-input{         /*输入框失去焦点时动画*/
