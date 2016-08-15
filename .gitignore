@@ -1,1 +1,9 @@
-*.idea/
+﻿*.idea/
+node_modules/
+*.map
+.sass-cache/
+npm-debug.log
+.directory
+test.*
+test/
+
