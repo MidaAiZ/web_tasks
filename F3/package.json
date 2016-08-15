@@ -1,0 +1,17 @@
+﻿{
+  "name": "f3_tasks",
+  "version": "1.0.0",
+  "description": "Test how to use npm in linux system as a task of F3",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github/SinnerAiZ/web_tasks/F3"
+  },
+  "author": "XiaoMing",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}
