@@ -1,6 +1,169 @@
-$height: 1000px;
-$width: 1000px;
-.div{
+$light-blue: #6090b9;
+$dark-blue: #2f506c;
+$active-blue: #4678a0;
+$narrow-width: 35px;
+$narrow-height: 27px;
+$no-border-radius: 0px;
+$no-padding: 0px;
+$no-margin: 0px;
+$header-margin-x: 15%;
+$header-margin-y: 15px;
+$full: 100%;
+$text-color-dark: black;
+$text-color-light: white;
+
+@mixin set-width-height($width:100%,$height:100%){
   width: $width;
   height: $height;
+}
+
+.light-blue{
+  background-color: $light-blue;
+}
+.dark-blue{
+  background-color: $dark-blue;
+}
+.navbar{
+  margin:$no-margin;
+  border-radius: $no-border-radius;
+  & .navbar-form{
+    margin: $no-margin;
+    padding: $no-padding;
+  }
+  & .navbar-a{
+    padding: $no-padding;
+    margin:10px 5px;
+  }
+  & .navbar-ico{
+    @include set-width-height($narrow-width,$narrow-height+5);
+    background: red;
+  }
+  & .navbar-right{
+    margin-right: 100px;
+    & input[type=text]{
+      @include set-width-height(250px,35px);
+    }
+    & a{
+      color: $text-color-light;
+    }
+  }
+}
+.header,.header .row{
+  height: $full;
+}
+.header-left{
+  height: 100%;
+  padding: $header-margin-y+15 0px;
+  & .header-content{
+    height: $full;
+    margin: $no-margin $header-margin-x;
+    & .header-ico{
+      @include set-width-height(40px,40px);
+      margin-top: -18px;
+      background-color: #00ee00;
+    }
+    & .header-text{
+      display: inline-block;
+    }
+     & .text-head{
+        & h4{
+          display: inline;
+        }
+      }
+      & .text-body{
+        font-size: 0.9em;
+     }
+  }
+}
+.header-right{
+  height: $full;
+  padding: $header-margin-y+10 0px;
+  text-align: right;
+   & .text-top {
+     width: $full;
+     color: $text-color-dark;
+     & a{
+       color: $text-color-dark;
+     }
+   }
+   & .text-bottom{
+     width: $full;
+     .text-block{
+       display: inline-block;
+     }
+     & .ico-phone,
+     & .ico-message{
+       @include set-width-height(20px,20px);
+       background-color: #eeee9c;
+     }
+   }
+}
+.tab-pane{
+  height: 50px;
+  background-color: $light-blue;
+  & ul{
+    height: $full;
+    & li{
+      @include set-width-height(auto,100%);
+      display: inline-block;
+      margin: $no-margin;
+      padding: 0px 15px;
+      line-height: 50px;
+      text-align: center;
+      cursor: pointer;
+      &:nth-child(1){
+        margin-left: 5%;
+      }
+      &:hover{
+        background-color: $active-blue;
+      }
+      & a{
+        color: $text-color-light;
+        &:focus,
+        &:hover{
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.tab-content{
+  margin: 20px 5%;
+}
+#home{
+  @include set-width-height(100%,400px);
+  & #lunbo-contianer{
+    margin: 0px auto;
+    width: $full;
+    & img{
+    opacity: 1;
+  }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and(max-width: 768px) {
+  li{
+    display: inline-block !important;;
+  }
+  a{
+    display: inline-block !important;;
+  }
 }

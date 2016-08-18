@@ -3,21 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--<script src="node_modules/jquery/dist/jquery.js"></script>-->
+    <script src="../F1/framework/jquery.js"></script>
+    <script src="../F1/src/LunboPlugin.js"></script>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="index.css" rel="stylesheet" type="text/css">
+    <link href="../F1/src/lunbo.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar dark-blue">
         <div class="container-fluid">
-            <div class="nav navbar-left col-sm-offset-1">
-                <ul class="nav navbar-nav">
-                    <li class=""><a href="#" class="navbar-btn btn-danger" role="button"></a></li>
-                    <li class=""><a href="#" class="navbar-btn btn-danger" role="button"></a></li>
-                    <li class=""><a href="#" class="navbar-btn btn-danger" role="button"></a></li>
-                    <li class=""><a href="#" class="navbar-btn btn-danger" role="button"></a></li>
-                </ul>
+            <div class="row">
+                <div class="navbar-left col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+                    <ul class="nav navbar-nav">
+                        <li class=""><a href="#" class="navbar-btn navbar-a"><img src="" class="navbar-ico"></a></li>
+                        <li class=""><a href="#" class="navbar-btn navbar-a"><img src="" class="navbar-ico"></a></li>
+                        <li class=""><a href="#" class="navbar-btn navbar-a"><img src="" class="navbar-ico"></a></li>
+                        <li class=""><a href="#" class="navbar-btn navbar-a"><img src="" class="navbar-ico"></a></li>
+                    </ul>
+                </div>
+                <div class="navbar-right">
+                    <form class="navbar-form">
+                        <div class="form-group">
+                            <input type="text" class="navbar-btn" placeholder="Search the site...">
+                            <a href="#" class="btn btn-narrow navbar-btn light-blue"><span>Go</span></a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </nav>
+    <div class="header container-fluid">
+        <div class="row">
+            <div class="header-left col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="header-content col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                    <img class="header-ico" href="">
+                    <div class="header-text">
+                        <div class="text-head"><h4><b>College Green Online</b></h4></div>
+                        <div class="text-body"><span>Website Template for Education</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                <div class="text-top small">
+                    <a href="#">Home</a>
+                    <span class="separate">|</span>
+                    <a href="#">FAG</a>
+                    <span class="separate">|</span>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="text-bottom">
+                    <div class="text-block">
+                        <img class="ico-phone" src="">
+                        <span class="connect big">Call us today 0800 123 4567</span>
+                    </div>
+                    <div class="text-block">
+                        <img class="ico-message" src="">
+                        <span class="website">enquires@website.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane container-fluid">
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#courses">COURSES</a></li>
+            <li><a href="#news">NEWS</a></li>
+            <li><a href="#events">EVENTS</a></li>
+            <li><a href="#pages">PAGES</a></li>
+            <li><a href="#shortcodes">SHORTCODES</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </div>
+    <div class="tab-content container-fluid">
+        <div id="home">
+            <div class="lunbo-container" id="lunbo-contianer">
+                <div class="image-container">
+                    <ul class="img-ul">
+                        <li class="show"><a href="#"><img src="../F1/image/16.jpg"></a></li>
+                        <li><a href="#"><img src="../F1/image/5.jpg"></a></li>
+                        <li><a href="#"><img src="../F1/image/17.jpg"></a></li>
+                        <li><a href="#"><img src="../F1/image/15.jpg"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="courses"></div>
+        <div id="news"></div>
+        <div id="events"></div>
+        <div id="pages"></div>
+        <div id="shortcodes"></div>
+        <div id="contact"></div>
+    </div>
+    <script>
+        $(document).ready( function() { $("#lunbo-contianer").createLunbo({"switchEffect":"card"})});
+    </script>
 </body>
 </html>

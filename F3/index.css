@@ -1,0 +1,107 @@
+.light-blue {
+  background-color: #6090b9; }
+
+.dark-blue {
+  background-color: #2f506c; }
+
+.navbar {
+  margin: 0px;
+  border-radius: 0px; }
+  .navbar .navbar-form {
+    margin: 0px;
+    padding: 0px; }
+  .navbar .navbar-a {
+    padding: 0px;
+    margin: 10px 5px; }
+  .navbar .navbar-ico {
+    width: 35px;
+    height: 32px;
+    background: red; }
+  .navbar .navbar-right {
+    margin-right: 100px; }
+    .navbar .navbar-right input[type=text] {
+      width: 250px;
+      height: 35px; }
+    .navbar .navbar-right a {
+      color: white; }
+
+.header, .header .row {
+  height: 100%; }
+
+.header-left {
+  height: 100%;
+  padding: 30px 0px; }
+  .header-left .header-content {
+    height: 100%;
+    margin: 0px 15%; }
+    .header-left .header-content .header-ico {
+      width: 40px;
+      height: 40px;
+      margin-top: -18px;
+      background-color: #00ee00; }
+    .header-left .header-content .header-text {
+      display: inline-block; }
+    .header-left .header-content .text-head h4 {
+      display: inline; }
+    .header-left .header-content .text-body {
+      font-size: 0.9em; }
+
+.header-right {
+  height: 100%;
+  padding: 25px 0px;
+  text-align: right; }
+  .header-right .text-top {
+    width: 100%;
+    color: black; }
+    .header-right .text-top a {
+      color: black; }
+  .header-right .text-bottom {
+    width: 100%; }
+    .header-right .text-bottom .text-block {
+      display: inline-block; }
+    .header-right .text-bottom .ico-phone, .header-right .text-bottom .ico-message {
+      width: 20px;
+      height: 20px;
+      background-color: #eeee9c; }
+
+.tab-pane {
+  height: 50px;
+  background-color: #6090b9; }
+  .tab-pane ul {
+    height: 100%; }
+    .tab-pane ul li {
+      width: auto;
+      height: 100%;
+      display: inline-block;
+      margin: 0px;
+      padding: 0px 15px;
+      line-height: 50px;
+      text-align: center;
+      cursor: pointer; }
+      .tab-pane ul li:nth-child(1) {
+        margin-left: 5%; }
+      .tab-pane ul li:hover {
+        background-color: #4678a0; }
+      .tab-pane ul li a {
+        color: white; }
+        .tab-pane ul li a:focus, .tab-pane ul li a:hover {
+          text-decoration: none; }
+
+.tab-content {
+  margin: 20px 5%; }
+
+#home {
+  width: 100%;
+  height: 400px; }
+  #home #lunbo-contianer {
+    margin: 0px auto;
+    width: 100%; }
+    #home #lunbo-contianer img {
+      opacity: 1; }
+
+@media screen and (max-width: 768px) {
+  li {
+    display: inline-block !important; }
+
+  a {
+    display: inline-block !important; } }
