@@ -1,6 +1,6 @@
-$light-blue: #6090b9;
-$dark-blue: #2f506c;
-$active-blue: #4678a0;
+$light-blue: #6c86b9;
+$dark-blue: #3b4b6c;
+$active-blue: #556ea0;
 $narrow-width: 35px;
 $narrow-height: 27px;
 $no-border-radius: 0px;
@@ -11,6 +11,7 @@ $header-margin-y: 15px;
 $full: 100%;
 $text-color-dark: black;
 $text-color-light: white;
+$default-margin: 5%;
 
 @mixin set-width-height($width:100%,$height:100%){
   width: $width;
@@ -32,31 +33,43 @@ $text-color-light: white;
   }
   & .navbar-a{
     padding: $no-padding;
-    margin:10px 5px;
   }
   & .navbar-ico{
     @include set-width-height($narrow-width,$narrow-height+5);
     background: red;
   }
+  & .navbar-left{
+    margin-left: $default-margin;
+    width: auto;
+  }
   & .navbar-right{
-    margin-right: 100px;
+    margin-right: $default-margin;
     & input[type=text]{
       @include set-width-height(250px,35px);
     }
-    & a{
+    & input[type=submit]{
       color: $text-color-light;
+      border-radius: $no-border-radius;
     }
   }
+  & #nav-collapsed{
+    background-color: #cccccc;
+    &:active{
+      background-color: #a8a2a4;
+    }
+    & .icon-bar{
+      background-color: white;
+    }
+  }
+
 }
-.header,.header .row{
-  height: $full;
-}
+
 .header-left{
   height: 100%;
   padding: $header-margin-y+15 0px;
   & .header-content{
     height: $full;
-    margin: $no-margin $header-margin-x;
+    margin: $no-margin 10%;
     & .header-ico{
       @include set-width-height(40px,40px);
       margin-top: -18px;
@@ -98,72 +111,170 @@ $text-color-light: white;
      }
    }
 }
-.tab-pane{
+.tab{
   height: 50px;
   background-color: $light-blue;
   & ul{
     height: $full;
+    width: 720px;
     & li{
-      @include set-width-height(auto,100%);
+      @include set-width-height(auto,$full);
       display: inline-block;
       margin: $no-margin;
-      padding: 0px 15px;
-      line-height: 50px;
       text-align: center;
       cursor: pointer;
       &:nth-child(1){
-        margin-left: 5%;
+        margin-left: $default-margin;
       }
-      &:hover{
+      &:hover,
+      &.active{
         background-color: $active-blue;
+        & a,
+        & a:hover,
+        & a:focus{
+          color: $text-color-light;
+          border-color: $active-blue;
+          background-color: $active-blue;
+          cursor: pointer;
+        }
       }
       & a{
         color: $text-color-light;
-        &:focus,
-        &:hover{
-          text-decoration: none;
-        }
+        height: $full;
+        line-height: 30px;
       }
     }
   }
 }
 
 .tab-content{
-  margin: 20px 5%;
+  margin: 20px $default-margin;
 }
 #home{
-  @include set-width-height(100%,400px);
   & #lunbo-contianer{
-    margin: 0px auto;
+    margin: $no-margin auto;
     width: $full;
-    & img{
-    opacity: 1;
   }
+}
+
+.carousel{
+  & .item{
+    width: $full;
+  }
+  & img{
+    width: $full;
+  }
+  & .carousel-indicators{
+    overflow: visible;
+    bottom: -40px;
+    & li{
+      background-color: #6c6c6c;
+      &.active{
+        background-color: $active-blue;
+      }
+    }
+  }
+  & .carousel-caption{
+    position: absolute;
+    text-align: left;
+    bottom: -20px;
+    left: 50px;
+    & .block-blank{
+      display: block;
+    }
+    & .btn{
+      padding: 0px 10px;
+    }
+    & a{
+      border-radius: $no-border-radius;
+      color: $text-color-light;
+      margin: 8px 0px;
+    }
+    & .caption-body{
+      background-color: black;
+      display: inline-block;
+      padding: $no-padding 10px;
+      opacity: 0.8;
+    }
   }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media screen and(max-width: 768px) {
+@media screen and(max-width: 1100px){
+  .carousel-caption{
+    & .btn{
+      & h3{
+        font-size: 18px;
+      }
+    }
+    & h4{
+      font-size: 14px;
+    }
+  }
+}
+@media screen and (max-width: 768px){
+  .navbar-right{
+    margin: $no-margin !important;
+    & form{
+      text-align: center !important;
+    }
+  }
   li{
     display: inline-block !important;;
   }
   a{
     display: inline-block !important;;
+  }
+  .tab-content{
+    padding: 5px;
+    margin: 10px $no-margin;
+  }
+  .carousel-caption{
+    bottom: -13px !important;
+    & .btn{
+      & h3{
+        font-size: 14px;
+      }
+    }
+    & h4{
+      font-size: 10px;
+    }
+  }
+}
+@media screen and(max-width: 710px) {
+  .tab{
+    height: 60px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+  }
+}
+@media screen and(max-width: 690px) {
+  .header{
+    position: static;
+    & .header-left{
+      width: $full;
+      margin: 10px $no-margin;
+      padding: $no-padding;
+    }
+    & .header-right{
+      position: absolute;
+      bottom: 0px;
+      height: auto;
+      padding: 10px;
+      width: $full;
+      background-color: $light-blue;
+      & a:hover{
+        color: $text-color-light;
+      }
+    }
+  }
+  .carousel-caption{
+    display: none;
+  }
+}
+@media screen and (max-width: 345px) {
+  .header-ico{
+    display: none;
   }
 }
