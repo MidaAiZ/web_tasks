@@ -33,10 +33,16 @@ $default-margin: 5%;
   }
   & .navbar-a{
     padding: $no-padding;
+    &:hover{
+      background-color: $light-blue;
+    }
+    &:active,
+    &:focus{
+      background-color: $active-blue;
+    }
   }
   & .navbar-ico{
-    @include set-width-height($narrow-width,$narrow-height+5);
-    background: red;
+    margin: $no-margin 5px;
   }
   & .navbar-left{
     margin-left: $default-margin;
@@ -44,6 +50,9 @@ $default-margin: 5%;
   }
   & .navbar-right{
     margin-right: $default-margin;
+    & .ico-unshow{
+      display: none;
+    }
     & input[type=text]{
       @include set-width-height(250px,35px);
     }
@@ -73,7 +82,6 @@ $default-margin: 5%;
     & .header-ico{
       @include set-width-height(40px,40px);
       margin-top: -18px;
-      background-color: #00ee00;
     }
     & .header-text{
       display: inline-block;
@@ -103,11 +111,6 @@ $default-margin: 5%;
      width: $full;
      .text-block{
        display: inline-block;
-     }
-     & .ico-phone,
-     & .ico-message{
-       @include set-width-height(20px,20px);
-       background-color: #eeee9c;
      }
    }
 }
@@ -194,7 +197,7 @@ $default-margin: 5%;
       background-color: black;
       display: inline-block;
       padding: $no-padding 10px;
-      opacity: 0.8;
+      opacity: 0.6;
     }
   }
 }
@@ -217,6 +220,9 @@ $default-margin: 5%;
     margin: $no-margin !important;
     & form{
       text-align: center !important;
+    }
+    .ico-unshow{
+      display: none !important;
     }
   }
   li{
@@ -241,13 +247,24 @@ $default-margin: 5%;
     }
   }
 }
-@media screen and(max-width: 710px) {
+@media screen and(max-device-width: 980px) and(max-width: 710px) {
   .tab{
-    height: 60px;
     overflow-x: scroll;
     overflow-y: hidden;
-
+    height: 40px !important;
+    & a{
+      line-height: 20px !important;
+    }
   }
+}
+@media screen and(min-device-width: 981px) and(max-width: 710px) {
+  .tab{
+     overflow-x: scroll;
+     overflow-y: hidden;
+     & a{
+       line-height: 10px !important;
+     }
+   }
 }
 @media screen and(max-width: 690px) {
   .header{
@@ -263,14 +280,36 @@ $default-margin: 5%;
       height: auto;
       padding: 10px;
       width: $full;
-      background-color: $light-blue;
+      background-color: $dark-blue;
+      color: $text-color-light;
       & a:hover{
         color: $text-color-light;
       }
     }
   }
+  .tab-content{
+    & h2{
+      font-size: 1.5em;
+    }
+    & h4{
+      font-size: 0.8em;
+    }
+  }
   .carousel-caption{
     display: none;
+  }
+}
+@media screen and (max-width: 409px) {
+  .ico-hide{
+    display: none !important;
+  }
+  .navbar-right{
+    & .ico-unshow{
+      display: inline-block !important;
+    }
+    & input[type=text]{
+      width: 70% !important;
+    }
   }
 }
 @media screen and (max-width: 345px) {
