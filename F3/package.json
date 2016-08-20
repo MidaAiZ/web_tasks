@@ -1,10 +1,9 @@
-﻿{
+{
   "name": "f3_tasks",
   "version": "1.0.0",
   "description": "Test how to use npm in linux system as a task of F3",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github/SinnerAiZ/web_tasks/F3"
@@ -12,6 +11,10 @@
   "author": "XiaoMing",
   "license": "ISC",
   "dependencies": {
-    "jquery": "^3.1.0"
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-ruby-sass": "^2.1.0"
   }
 }
