@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=divice-width,initial-scale=1">
     <title>index</title>
-    <!--<script src="node_modules/jquery/dist/jquery.js"></script>-->
     <script src="../F1/framework/jquery.js"></script>
     <script src="../F1/src/LunboPlugin.js"></script>
     <script src="node_modules/bootstrap/js/tab.js"></script>
@@ -25,13 +24,17 @@
                         <span class="icon-bar"></span>
                     </button>
                     <ul class="nav navbar-nav">
-                        <li class=""><a href="#" class="navbar-btn navbar-a"><img src="" class="navbar-ico"></a></li>
-                        <li class=""><a href="#" class="navbar-btn navbar-a"><img src="" class="navbar-ico"></a></li>
-                        <li class=""><a href="#" class="navbar-btn navbar-a"><img src="" class="navbar-ico"></a></li>
-                        <li class=""><a href="#" class="navbar-btn navbar-a"><img src="" class="navbar-ico"></a></li>
+                        <li class><a href="#" class="navbar-btn navbar-a"><img src="ico/ico_bird.png" class="navbar-ico"></a></li>
+                        <li class><a href="#" class="navbar-btn navbar-a"><img src="ico/ico_f.png" class="navbar-ico"></a></li>
+                        <li class><a href="#" class="navbar-btn navbar-a"><img src="ico/ico_YouTube.png" class="navbar-ico"></a></li>
+                        <li class=""><a href="#" class="navbar-btn navbar-a"><img src="ico/ico_in.png" class="navbar-ico"></a></li>
+                        <li class="ico-hide"><a href="#" class="navbar-btn navbar-a"><img src="ico/ico_g+.png" class="navbar-ico"></a></li>
+                        <li class="ico-hide"><a href="#" class="navbar-btn navbar-a"><img src="ico/ico_wifi.png" class="navbar-ico"></a></li>
                     </ul>
                 </div>
                 <div class="navbar-right collapse navbar-collapse" id="navbar-right">
+                    <li class="ico-unshow"><a href="#" class="navbar-btn navbar-a"><img src="ico/ico_g+.png" class="navbar-ico"></a></li>
+                    <li class="ico-unshow"><a href="#" class="navbar-btn navbar-a"><img src="ico/ico_wifi.png" class="navbar-ico"></a></li>
                     <form class="navbar-form">
                         <div class="form-group">
                             <input type="text" class="navbar-btn" placeholder="Search the site...">
@@ -45,7 +48,7 @@
         <div class="row">
             <div class="header-left col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <div class="header-content col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                    <img class="header-ico" href="">
+                    <img class="header-ico" src="ico/ico_nav_head.png">
                     <div class="header-text">
                         <div class="text-head"><h4><b>College Green Online</b></h4></div>
                         <div class="text-body"><span>Website Template for Education</span></div>
@@ -62,11 +65,11 @@
                 </div>
                 <div class="text-bottom">
                     <div class="text-block">
-                        <img class="ico-phone" src="">
+                        <img class="ico-phone" src="ico/ico_phone.png">
                         <span class="connect big">Call us today 0800 123 4567</span>
                     </div>
                     <div class="text-block">
-                        <img class="ico-message" src="">
+                        <img class="ico-message" src="ico/ico_message.png">
                         <span class="website">enquires@website.com</span>
                     </div>
                 </div>
@@ -75,7 +78,7 @@
     </div>
     <div class="tab container-fluid">
         <ul class="nav nav-tabs" id="nav-tabs">
-            <li class="active"><a href="#home"  data-toggle="tab" onclick="setSize($('body').css('width'))">HOME</a></li>
+            <li class="active"><a href="#home"  data-toggle="tab" onclick="setSize()">HOME</a></li>
             <li><a href="#courses" data-toggle="tab">COURSES</a></li>
             <li><a href="#news" data-toggle="tab">NEWS</a></li>
             <li><a href="#events" data-toggle="tab">EVENTS</a></li>
@@ -97,21 +100,21 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="../F1/image/16.jpg" alt="...">
+                        <img src="image/1.jpg" alt="IMAGE1">
                         <div class="carousel-caption">
                             <div class="block-blank"><a href="#" class="btn light-blue" role="button"><h3>COME TO OUR OPEN DAYS</h3></a></div>
                             <div class="caption-body"><h4>Donec accumsan nunc sed ipsum dapibus consectetur</h4></div>
                         </div>
                     </div>
                     <div class="item">
-                        <img src="../F1/image/15.jpg" alt="...">
+                        <img src="image/2.jpg" alt="IMAGE2">
                         <div class="carousel-caption">
                             <div class="block-blank"><a href="#" class="btn light-blue" role="button"><h3>COME TO OUR OPEN DAYS</h3></a></div>
                             <div class="caption-body"><h4>Donec accumsan nunc sed ipsum dapibus consectetur</h4></div>
                         </div>
                     </div>
                     <div class="item">
-                        <img src="../F1/image/17.jpg" alt="...">
+                        <img src="image/3.jpg" alt="IMAGE3">
                         <div class="carousel-caption">
                             <div class="block-blank"><a href="#" class="btn light-blue" role="button"><h3>COME TO OUR OPEN DAYS</h3></a></div>
                             <div class="caption-body"><h4>Donec accumsan nunc sed ipsum dapibus consectetur</h4></div>
@@ -134,54 +137,54 @@
             <div class="jumbotron">
                 <div class="panel panel-primary">
                     <div class="panel-heading"><h2>This is COURSES panel</h2></div>
-                    <div class="panel-body"><h3>Join us!Now!</h3></div>
+                    <div class="panel-body"><h4>Join us!Now!</h4></div>
                 </div>
-                <button class="btn btn-info"><h3>Join us!Now!</h3></button>
+                <button class="btn btn-info"><h4>Join us!Now!</h4></button>
             </div>
         </div>
         <div id="news" class="tab-pane fade">
             <div class="jumbotron">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h1>This is EVENTS NEWS</h1></div>
-                    <div class="panel-body"><h3>Join us!Now!</h3></div>
+                    <div class="panel-heading"><h2>This is EVENTS NEWS</h2></div>
+                    <div class="panel-body"><h4>Join us!Now!</h4></div>
                 </div>
-                <button class="btn btn-info"><h3>Join us!Now!</h3></button>
+                <button class="btn btn-info"><h4>Join us!Now!</h4></button>
             </div>
         </div>
         <div id="events" class="tab-pane fade">
             <div class="jumbotron">
                 <div class="panel panel-danger">
-                    <div class="panel-heading"><h1>This is EVENTS panel</h1></div>
-                    <div class="panel-body"><h3>Join us!Now!</h3></div>
+                    <div class="panel-heading"><h2>This is EVENTS panel</h2></div>
+                    <div class="panel-body"><h4>Join us!Now!</h4></div>
                 </div>
-                <button class="btn btn-info"><h3>Join us!Now!</h3></button>
+                <button class="btn btn-info"><h4>Join us!Now!</h4></button>
              </div>
         </div>
         <div id="pages" class="tab-pane fade">
             <div class="jumbotron">
                 <div class="panel panel-success">
-                    <div class="panel-heading"><h1>This is PAGES panel</h1></div>
-                    <div class="panel-body"><h3>Join us!Now!</h3></div>
+                    <div class="panel-heading"><h2>This is PAGES panel</h2></div>
+                    <div class="panel-body"><h4>Join us!Now!</h4></div>
                 </div>
-                <button class="btn btn-info"><h3>Join us!Now!</h3></button>
+                <button class="btn btn-info"><h4>Join us!Now!</h4></button>
              </div>
         </div>
         <div id="shortcodes" class="tab-pane fade">
             <div class="jumbotron">
                 <div class="panel panel-info">
-                    <div class="panel-heading"><h1>This is SHORTCODES panel</h1></div>
-                    <div class="panel-body">QRTYUILKJHGVBNM</div>
+                    <div class="panel-heading"><h2>This is SHORTCODES panel</h2></div>
+                    <div class="panel-body"><h4>QRTYUILKJHGVBNM</h4></div>
                 </div>
-                <button class="btn btn-info"><h3>Join us!Now!</h3></button>
+                <button class="btn btn-info"><h4>Join us!Now!</h4></button>
             </div>
         </div>
         <div id="contact" class="tab-pane fade">
             <div class="jumbotron">
                 <div class="panel panel-warning">
-                    <div class="panel-heading"><h1>This is CONTACT panel</h1></div>
-                    <div class="panel-body"><h3>Join us!Now!</h3></div>
+                    <div class="panel-heading"><h2>This is CONTACT panel</h2></div>
+                    <div class="panel-body"><h4>Join us!Now!</h4></div>
                 </div>
-                <button class="btn btn-info"><h3>Join us!Now!</h3></button>
+                <button class="btn btn-info"><h4>Join us!Now!</h4></button>
             </div>
          </div>
     </div>
@@ -193,8 +196,17 @@
             });
         });
         function setSize() {
-            var height = arguments[0] ||  (($("#carousel").css("width")));
-            $("#carousel img").css({"height": (height.replace("px",""))*0.33});
+            /*当窗口大小变化时改变轮播图大小 实现响应式
+              通过计时器来完成
+              当窗口大小改变时如果当前tab不在轮播图的content，若重新点击回轮播图的tab时获取不到#carousel的宽度（width=0）；
+              因为用户在点击HOME按钮重回轮播图tab时轮播图并不会马上显示，所以获取不到宽度，此时无法设置大小
+              为了解决这个问题，使用计时器，则当用户切换回HOME（轮播图）tab时,过5ms后再设置轮播图大小
+              此时轮播图控件已显示，可以获取得到width，轮播图content即可正确显示
+             */
+            setTimeout( function() {
+                var height = (($("#carousel").css("width")));
+                $("#carousel img").css({"height": (height.replace("px",""))*0.33});
+            },5);
         }
     </script>
 </body>
